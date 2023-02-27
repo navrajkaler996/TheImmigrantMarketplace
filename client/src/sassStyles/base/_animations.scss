@@ -1,0 +1,32 @@
+@keyframes RedirectedFrom1 {
+  0% {
+    opacity: 0.5;
+    transform: translateX(-30rem);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateX(2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0rem);
+  }
+}
+
+@keyframes RedirectedFrom2 {
+  0% {
+    opacity: 1;
+    transform: translateX(0rem);
+  }
+
+  60% {
+    transform: translateX(30rem);
+  }
+
+  100% {
+    opacity: 0;
+    margin-top: -2rem;
+  }
+}

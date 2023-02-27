@@ -1,0 +1,88 @@
+.create-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  &__container {
+    width: 50%;
+    min-height: 80vh;
+    background-image: linear-gradient(
+      to right,
+      $primary-color-2,
+      $primary-color-3,
+      $primary-color-2
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include respond(phone) {
+      width: 100%;
+      height: 100vh;
+    }
+  }
+
+  &__form {
+    margin-top: 2rem;
+
+    &--input-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    &--label {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    &--input {
+      width: 40rem;
+      height: 3.7rem;
+      border: 0;
+      border-radius: 10rem;
+      padding-left: 2rem;
+      font-size: 1.6rem;
+      transition: all 0.2s ease-in;
+
+      &:focus {
+        outline: none;
+        box-shadow: $box-shadow-3;
+        transform: scale(1.04);
+      }
+
+      &-dropdown {
+        background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+)
+          no-repeat 100% 50%;
+        background-color: #fff;
+
+        &:invalid {
+          color: gray;
+        }
+      }
+
+      &-submit {
+        margin-top: 2rem;
+      }
+    }
+
+    &--dropdown-container {
+      display: flex;
+    }
+
+    &--main-error {
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      font-weight: 600;
+
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 2.5rem;
+    }
+  }
+}

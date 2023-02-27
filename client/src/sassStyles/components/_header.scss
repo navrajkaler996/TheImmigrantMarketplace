@@ -1,0 +1,224 @@
+.main-header {
+  height: 50rem;
+  width: inherit;
+  position: relative;
+  background-image: linear-gradient(
+    to right,
+    $primary-color-1,
+    $primary-color-2,
+    $primary-color-1
+  );
+  background-size: cover;
+
+  /////UTILITY BAR
+  &__utilities {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    &--login {
+      width: 5rem;
+      height: 5rem;
+      margin-top: 2rem;
+      margin-right: 2.5rem;
+
+      transition: all 0.1s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+      @include respond(phone) {
+        display: none;
+      }
+    }
+
+    &--container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &-hamburger {
+        display: inline-block;
+      }
+    }
+
+    &--logged-in {
+      padding: 0.8rem 1rem;
+      margin-top: 2rem;
+      margin-right: 3rem;
+      box-shadow: $box-shadow-1;
+
+      @include respond(phone) {
+        display: none;
+      }
+    }
+
+    &--dropdown {
+      background-color: #fff;
+      z-index: 999;
+      margin-top: 2rem;
+      margin-right: 2rem;
+      padding: 0.5rem 2rem;
+      position: relative;
+      text-transform: uppercase;
+      width: fit-content;
+      font-size: 1.5rem;
+      box-shadow: $box-shadow-1;
+
+      @include respond(phone) {
+        display: none;
+      }
+
+      &-list {
+        list-style: none;
+      }
+
+      &-list-item {
+        text-decoration: none;
+        color: black;
+      }
+    }
+
+    &--hamburger {
+      display: none;
+      @include respond(phone) {
+        display: inline-flex;
+      }
+    }
+  }
+
+  /////NAVIGATION BAR
+  &__navigation {
+    position: absolute;
+    top: 16rem;
+    width: 100%;
+
+    &-1 {
+      left: 0;
+      height: 6rem;
+      width: fit-content;
+      min-width: 35%;
+      background-color: #fff;
+      box-shadow: $box-shadow-1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include respond(tab-port) {
+        display: none;
+        width: auto;
+      }
+    }
+
+    &-2 {
+      right: 0;
+      height: 6rem;
+      width: fit-content;
+      min-width: 35%;
+      background-color: #fff;
+      box-shadow: $box-shadow-1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      @include respond(tab-port) {
+        display: none;
+        width: auto;
+      }
+    }
+
+    /////Navigation bar: max-width = 900px
+    &-3 {
+      display: none;
+      @include respond(tab-port) {
+        height: 6rem;
+        background-color: #fff;
+        box-shadow: $box-shadow-1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+      }
+
+      @include respond(phone) {
+        display: none;
+      }
+    }
+
+    &-logo {
+      top: 6rem;
+      left: 0;
+      right: 0;
+      margin-right: auto;
+      margin-left: auto;
+      background-image: linear-gradient(
+        to right,
+        $primary-color-2,
+        $primary-color-3,
+        $primary-color-2
+      );
+      box-shadow: $box-shadow-2;
+      /////Resizing logo
+      @include respond(tab-land) {
+        transform: scale(0.6);
+      }
+      /////Resizing and moving logo up
+      @include respond(tab-port) {
+        top: -6rem;
+        transform: scale(0.4);
+      }
+      /////Resizing and repositioning logo to the original
+      @include respond(phone) {
+        transform: scale(0.8);
+        top: 8rem;
+      }
+    }
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /////SEARCH BAR
+  &__search-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 40rem;
+
+    &--search-bar {
+      width: 40rem;
+      height: 3.7rem;
+      border: 0;
+      border-radius: 10rem;
+      padding-left: 2rem;
+      font-size: 1.6rem;
+      transition: all 0.2s ease-in;
+
+      &::placeholder {
+        font-size: 1.6rem;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: $box-shadow-3;
+      }
+    }
+
+    &--search-icon {
+      height: 3rem;
+      width: 3rem;
+      position: absolute;
+      top: 0.3rem;
+      left: 37rem;
+      cursor: pointer;
+      transition: all 0.1s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

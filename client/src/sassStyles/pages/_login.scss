@@ -1,0 +1,31 @@
+.login {
+  &-image-container {
+    display: flex;
+    justify-content: center;
+    transform: scale(0.8);
+  }
+
+  &-redirectedFrom-message {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-weight: 500;
+    animation: RedirectedFrom1 2s, RedirectedFrom2 2s 5s forwards;
+  }
+  &-links {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    font-size: 1.5rem;
+    padding: 1rem 1rem 0 0;
+    text-transform: uppercase;
+
+    &-1 {
+      cursor: pointer;
+    }
+    &-2 {
+      cursor: pointer;
+    }
+  }
+}
