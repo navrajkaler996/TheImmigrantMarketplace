@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../assets/Logo-1.png";
 import SearchIcon from "../../assets/Search-icon.png";
 import LoginIcon from "../../assets/Login-icon.png";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Hamburger from "../Hamburger";
 import { logout } from "../../actions/userActions";
 
 const MainHeader = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.users?.login);
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -18,7 +17,6 @@ const MainHeader = () => {
 
   const logoutHandler = () => {
     dispatch(logout());
-    // return <Navigate to="/login" replace="true" />;
   };
 
   return (

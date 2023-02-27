@@ -137,8 +137,7 @@ big-desk
 .main-header__utilities--container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-right: 4rem;
 }
 .main-header__utilities--container-hamburger {
   display: inline-block;
@@ -146,8 +145,8 @@ big-desk
 .main-header__utilities--logged-in {
   padding: 0.8rem 1rem;
   margin-top: 2rem;
-  margin-right: 3rem;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  width: 12rem;
 }
 @media (max-width: 37.5em) {
   .main-header__utilities--logged-in {
@@ -158,11 +157,9 @@ big-desk
   background-color: #fff;
   z-index: 999;
   margin-top: 2rem;
-  margin-right: 2rem;
   padding: 0.5rem 2rem;
   position: relative;
   text-transform: uppercase;
-  width: fit-content;
   font-size: 1.5rem;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
