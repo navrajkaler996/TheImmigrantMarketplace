@@ -1,0 +1,71 @@
+.card {
+  min-height: 48rem;
+  width: 26rem;
+  background-image: linear-gradient(
+    to right,
+    $primary-color-3,
+    $primary-color-3
+  );
+  box-shadow: $box-shadow-2;
+  margin: 3rem 0rem;
+  text-align: center;
+
+  margin: 5rem 3rem;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  @include respond(phone) {
+    width: 30rem;
+  }
+
+  &__image {
+    height: 18rem;
+    width: 25rem;
+    padding: 0.5rem;
+
+    @include respond(phone) {
+      width: 29rem;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-transform: capitalize;
+
+    &--item {
+      display: flex;
+      align-items: center;
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+      // @include respond(phone) {
+      //   margin-left: 1.2rem;
+      // }
+      &-img {
+        width: 2rem;
+      }
+
+      &-text {
+        margin-left: 0.5rem;
+        font-size: 1.5rem;
+
+        &-utilities {
+          margin-left: 0;
+          flex-basis: 50%;
+        }
+      }
+
+      &-utilities {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 0;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
