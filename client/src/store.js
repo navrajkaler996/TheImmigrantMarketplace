@@ -4,16 +4,14 @@ import {
   userLoginReducer,
 } from "./reducers/userReducers";
 import { combineReducers } from "redux";
+import { itemListReducer } from "./reducers/itemReducers";
 
 /////Combining reducers
 const users = combineReducers({
   createAccount: userCreateAccountReducer,
   login: userLoginReducer,
+  items: itemListReducer,
 });
-
-// const preloadedState = {
-//   login: user,
-// };
 
 const store = configureStore({
   reducer: {

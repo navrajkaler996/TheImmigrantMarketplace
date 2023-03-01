@@ -5,4 +5,5 @@ export const errorMessages = {
   USER_NOT_FOUND: "User not found!",
   TOKEN_INVALID: "Invalid token!",
   TOKEN_NOT_FOUND: "No token found!",
+  FETCHING_DATA: "Error while fetching requested data!",
 };

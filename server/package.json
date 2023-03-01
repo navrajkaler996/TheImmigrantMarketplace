@@ -5,7 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev:server": "nodemon index.js"
+    "dev:server": "nodemon index.js",
+    "data:import": "node seeder",
+    "data:destroy": "node seeder -d"
+
   },
   "author": "",
   "license": "ISC",
