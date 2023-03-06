@@ -35,6 +35,10 @@ module.exports = {
         test: /\.(webp,svg)$/,
         use: "file-loader",
       },
+      {
+        test: /\.(webp)$/,
+        use: "url-loader",
+      },
     ],
   },
   resolve: {

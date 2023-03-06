@@ -6,7 +6,14 @@ import Item from "../models/itemModel.js";
 //GET @ /api/item/getItems
 export const getItems = asyncHandler(async (req, res) => {
   try {
-    const items = await Item.find();
+    let items = await Item.find();
+
+    items = items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    if (req.body?.count !== -1) {
+      const count = req.body.count;
+      items = items.slice(0, count);
+    }
 
     if (items) {
       res.status(201).json({

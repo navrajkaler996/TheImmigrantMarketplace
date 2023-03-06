@@ -71,9 +71,14 @@ big-desk
   letter-spacing: 0.2rem;
   font-weight: 500;
 }
+@media (max-width: 37.5em) {
+  .primary-heading-carousal {
+    font-size: 2.5rem;
+  }
+}
 
 .secondary-heading {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   font-weight: 500;
@@ -438,8 +443,6 @@ big-desk
   min-height: 48rem;
   width: 26rem;
   background-image: linear-gradient(to right, #c9184a, #c9184a);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  margin: 3rem 0rem;
   text-align: center;
   margin: 5rem 3rem;
   transition: transform 0.2s;
@@ -492,6 +495,27 @@ big-desk
   flex-wrap: wrap;
   margin-top: 0;
   text-transform: uppercase;
+}
+
+.carousal__container {
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.carousal__cards-container {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  transition: all 1s;
+  overflow-x: hidden;
+}
+.carousal__arrow {
+  align-self: end;
+  width: 6rem;
+  cursor: pointer;
 }
 
 .create-account {
@@ -602,28 +626,6 @@ big-desk
   justify-content: center;
   align-items: center;
   width: 100%;
-}
-
-.rentals__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 3rem;
-}
-.rentals__cards-container {
-  width: inherit;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.rentals__arrow {
-  align-self: center;
-  width: 8rem;
-  animation: DownArrow 1.2s ease-in-out;
-  animation-iteration-count: infinite;
-  cursor: pointer;
 }
 
 *,
