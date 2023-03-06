@@ -1,0 +1,28 @@
+.carousal {
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    width: inherit;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  &__cards-container {
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: start;
+
+    transition: all 1s;
+    overflow-x: hidden;
+  }
+
+  &__arrow {
+    align-self: end;
+    width: 6rem;
+
+    cursor: pointer;
+  }
+}

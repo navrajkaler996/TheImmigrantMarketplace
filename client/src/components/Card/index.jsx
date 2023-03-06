@@ -5,7 +5,9 @@ import HomeIcon from "../../assets/home.png";
 import AddressIcon from "../../assets/address.png";
 import SellerIcon from "../../assets/user.png";
 
-const Card = ({ data }) => {
+// import Sample from "/images/items/rentals/image-sample.jpeg";
+
+const Card = ({ data, open = false }) => {
   const [utilities, setUtilities] = useState([]);
 
   /////CREATING UTILITIES ARRAY FOR RENTALS
@@ -21,9 +23,19 @@ const Card = ({ data }) => {
     }
   }, [data]);
 
+  if (open) {
+    return <div className="card"></div>;
+  }
+
   return (
     <div className="card">
-      <img src={SampleImage} className="card__image" />
+      {data?.images?.length > 0 && (
+        <img
+          src={require(`/public/images/items/${data.images[0]}`).default}
+          className="card__image"
+        />
+      )}
+
       <h1 className="secondary-heading">{data?.itemName}</h1>
       <hr className="divider" />
       <div className="card__details">

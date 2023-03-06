@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.js",
@@ -10,6 +11,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
+    }),
+    new Dotenv({
+      systemvars: true,
     }),
   ],
   module: {
@@ -34,6 +38,10 @@ module.exports = {
       {
         test: /\.(webp,svg)$/,
         use: "file-loader",
+      },
+      {
+        test: /\.(webp)$/,
+        use: "url-loader",
       },
     ],
   },
