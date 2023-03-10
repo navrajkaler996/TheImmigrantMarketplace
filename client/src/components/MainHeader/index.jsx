@@ -111,7 +111,7 @@ const MainHeader = () => {
           Clothing
         </a>
         <a className="navigation-text" href="#">
-          Categories
+          sell
         </a>
       </div>
       <div className="main-header__navigation main-header__navigation-3">
@@ -137,7 +137,7 @@ const MainHeader = () => {
           Clothing
         </a>
         <a className="navigation-text" href="#">
-          Categories
+          sell
         </a>
       </div>
       <div className="main-header__search-box">

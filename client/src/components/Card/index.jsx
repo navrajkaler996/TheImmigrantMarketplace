@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import SampleImage from "../../assets/image-sample.jpeg";
 import DollarIcon from "../../assets/coin.png";
 import HomeIcon from "../../assets/home.png";
 import AddressIcon from "../../assets/address.png";
 import SellerIcon from "../../assets/user.png";
+import NextArrow from "../../assets/next-white.png";
+import PreviousArrow from "../../assets/back-white.png";
 
 // import Sample from "/images/items/rentals/image-sample.jpeg";
 
@@ -27,13 +28,53 @@ const Card = ({ data, open = false }) => {
     return <div className="card"></div>;
   }
 
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const handlePreviousClick = () => {
+    let i;
+    if (imageIndex > 0) {
+      i = imageIndex - 1;
+      setImageIndex(i);
+    } else {
+      setImageIndex(2);
+    }
+  };
+
+  const handleNextClick = () => {
+    let i;
+    if (imageIndex < 2) {
+      i = imageIndex + 1;
+      setImageIndex(i);
+    } else {
+      setImageIndex(0);
+    }
+  };
+
   return (
     <div className="card">
       {data?.images?.length > 0 && (
-        <img
-          src={require(`/public/images/items/${data.images[0]}`).default}
-          className="card__image"
-        />
+        <div className="card__image--container">
+          <img
+            src={PreviousArrow}
+            alt=""
+            className="card__image--arrow-1"
+            onClick={handlePreviousClick}
+          />
+          <img
+            src={
+              require(`/public/images/items/${data.images[imageIndex]}`).default
+            }
+            className="card__image"
+            id="first_image"
+          />
+
+          <img
+            src={NextArrow}
+            alt=""
+            className="card__image--arrow-2"
+            onClick={handleNextClick}
+          />
+        </div>
       )}
 
       <h1 className="secondary-heading">{data?.itemName}</h1>
