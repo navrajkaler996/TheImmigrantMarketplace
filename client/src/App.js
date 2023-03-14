@@ -10,6 +10,7 @@ import Register from "./pages/CreateAccount";
 import Footer from "./components/Footer";
 import MainHeader from "./components/MainHeader";
 import Login from "./pages/Login";
+import SecondaryHeader from "./components/SecondaryHeader";
 
 const App = () => {
   const location = useLocation();
@@ -17,9 +18,13 @@ const App = () => {
 
   return (
     <>
-      {(location?.pathname === "/home" || location?.pathname === "/") && (
+      {location?.pathname === "/home" || location?.pathname === "/" ? (
         <MainHeader />
-      )}
+      ) : location.pathname !== "/register" &&
+        location.pathname !== "/login" ? (
+        <SecondaryHeader />
+      ) : null}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
