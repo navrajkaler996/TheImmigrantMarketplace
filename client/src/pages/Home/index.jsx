@@ -13,13 +13,32 @@ const Home = () => {
   const { loading, list } = items;
 
   useEffect(() => {
-    dispatch(itemList(10));
+    dispatch(itemList());
   }, []);
+
+  const generateList = (list, category) => {
+    console.log(list);
+    return list.filter((l) => l.category === category);
+  };
 
   return (
     <div className="home__container">
       {/*Latest rentals*/}
-      <Carousal list={list} loading={loading} heading="Latest rentals" />
+      {list?.length > 0 && (
+        <Carousal
+          list={generateList(list, "Rentals")}
+          loading={loading}
+          heading="Latest rentals"
+        />
+      )}
+
+      {list?.length > 0 && (
+        <Carousal
+          list={generateList(list, "Mattresses")}
+          loading={loading}
+          heading="Latest Mattresses"
+        />
+      )}
     </div>
   );
 };
