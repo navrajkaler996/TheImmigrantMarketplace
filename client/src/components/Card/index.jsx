@@ -10,11 +10,17 @@ import PreviousArrow from "../../assets/back-white.png";
 
 const Card = ({ data, open = false }) => {
   const [utilities, setUtilities] = useState([]);
+  const [about, setAbout] = useState([]);
 
   /////CREATING UTILITIES ARRAY FOR RENTALS
   useEffect(() => {
-    if (Object.keys(data?.utilities)?.length > 0) {
+    console.log(data);
+    if (
+      data?.category === "Rentals" &&
+      Object.keys(data?.utilities)?.length > 0
+    ) {
       let temp = [];
+
       for (const key in data?.utilities) {
         if (data?.utilities[key]) {
           temp.push(key);
@@ -22,7 +28,17 @@ const Card = ({ data, open = false }) => {
       }
       setUtilities(temp);
     }
+    if (
+      data?.category === "Mattresses" &&
+      Object.keys(data?.about)?.length > 0
+    ) {
+      let temp = [];
+      temp.push(data?.about);
+      setAbout(temp);
+    }
   }, [data]);
+
+  console.log(about);
 
   if (open) {
     return <div className="card"></div>;
@@ -77,17 +93,19 @@ const Card = ({ data, open = false }) => {
         </div>
       )}
 
-      <h1 className="secondary-heading">{data?.itemName}</h1>
+      <h1 className="secondary-heading">{data?.itemName?.substring(0, 14)}</h1>
       <hr className="divider" />
       <div className="card__details">
         <div className="card__details--item">
           <img src={DollarIcon} className="card__details--item-img" />
           <span className="card__details--item-text">{data?.price}</span>
         </div>
-        <div className="card__details--item">
-          <img src={HomeIcon} className="card__details--item-img" />
-          <span className="card__details--item-text">{data?.type}</span>
-        </div>
+        {data?.category === "Rentals" && (
+          <div className="card__details--item">
+            <img src={HomeIcon} className="card__details--item-img" />
+            <span className="card__details--item-text">{data?.type}</span>
+          </div>
+        )}
         <div className="card__details--item">
           <img src={SellerIcon} className="card__details--item-img" />
           <span className="card__details--item-text">{data?.sellerName}</span>
@@ -105,6 +123,16 @@ const Card = ({ data, open = false }) => {
                 {u}
               </span>
             ))}
+        </div>
+        <div className="card__details--item card__details--item-about">
+          {about?.length > 0 &&
+            Object.keys(about[0]).map((key) => {
+              return (
+                <span className="card__details--item-text">
+                  <strong>{key}: </strong> {`${about[0][key]}`}
+                </span>
+              );
+            })}
         </div>
       </div>
     </div>

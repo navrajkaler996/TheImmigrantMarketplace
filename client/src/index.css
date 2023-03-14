@@ -78,7 +78,7 @@ big-desk
 }
 
 .secondary-heading {
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   font-weight: 500;
@@ -445,12 +445,15 @@ big-desk
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   margin: 5rem 3rem;
-  transition: transform 0.2s;
+  transition: all 0.2s;
   border-radius: 3rem;
 }
 .card:hover {
   transform: scale(1.2);
   cursor: pointer;
+}
+.card:hover .card__image {
+  filter: brightness(80%);
 }
 @media (max-width: 37.5em) {
   .card {
@@ -531,6 +534,11 @@ big-desk
   flex-wrap: wrap;
   margin-top: 0;
   text-transform: uppercase;
+}
+.card__details--item-about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .carousal__container {

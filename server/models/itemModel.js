@@ -16,7 +16,11 @@ const itemSchema = mongoose.Schema(
     },
     utilities: {
       type: Object,
-      required: true,
+      required: false,
+    },
+    about: {
+      type: Object,
+      required: false,
     },
     description: {
       type: String,
@@ -36,7 +40,7 @@ const itemSchema = mongoose.Schema(
     },
     type: {
       type: String,
-      required: true,
+      required: false,
     },
     images: {
       type: Array,
