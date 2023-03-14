@@ -330,6 +330,17 @@ big-desk
   transform: scale(1.2);
 }
 
+.secondary-header {
+  height: 15rem;
+}
+.secondary-header--navigation {
+  top: 4rem;
+}
+.secondary-header--logo {
+  width: 15rem;
+  top: 2rem;
+}
+
 .navigation__checkbox {
   display: none;
 }
