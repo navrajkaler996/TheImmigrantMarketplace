@@ -88,9 +88,9 @@ const MainHeader = () => {
         <a className="navigation-text" href="#">
           Electronics
         </a>
-        <a className="navigation-text" href="#">
+        <Link className="navigation-text" to="/browse/rentals">
           Rentals
-        </a>
+        </Link>
       </div>
 
       {/* MAIN HEADER LOGO */}

@@ -27,3 +27,22 @@ export const getItems = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+export const getItemsByCategory = asyncHandler(async (req, res) => {
+  try {
+    let category = req.params.category;
+    let items = await Item.find({ category: category });
+
+    if (items) {
+      res.status(201).json({
+        items,
+      });
+    }
+  } catch (error) {
+    res.status(400).send({
+      message: errorMessages.FETCHING_DATA,
+    });
+
+    throw new Error();
+  }
+});

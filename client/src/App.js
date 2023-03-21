@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import MainHeader from "./components/MainHeader";
 import Login from "./pages/Login";
 import SecondaryHeader from "./components/SecondaryHeader";
+import Browse from "./pages/Browse";
 
 const App = () => {
   const location = useLocation();
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/browse/:category" element={<Browse />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* <Footer /> */}
