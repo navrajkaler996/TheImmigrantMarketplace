@@ -17,7 +17,7 @@ const Home = () => {
   }, []);
 
   const generateList = (list, category) => {
-    console.log(list);
+    console.log("sss", list);
     return list.filter((l) => l.category === category);
   };
 
