@@ -28,6 +28,8 @@ export const getItems = asyncHandler(async (req, res) => {
   }
 });
 
+/////FETCHING ALL THE ITEMS by category
+//GET @ /api/item/getItems/:category
 export const getItemsByCategory = asyncHandler(async (req, res) => {
   try {
     let category = req.params.category;
@@ -43,6 +45,28 @@ export const getItemsByCategory = asyncHandler(async (req, res) => {
       message: errorMessages.FETCHING_DATA,
     });
 
-    throw new Error();
+    throw new Error(error);
+  }
+});
+
+/////FETCHING AN ITEM BY ID
+//GET @ /api/item/getItems/:id
+export const getItemById = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+
+  let item = await Item.findById({ _id: id });
+
+  try {
+    if (item) {
+      res.status(201).json({ item });
+    } else {
+      res.status(201).json({ item });
+    }
+  } catch (error) {
+    res.status(400).json({
+      message: errorMessages.FETCHING_DATA,
+    });
+
+    throw new Error(error);
   }
 });

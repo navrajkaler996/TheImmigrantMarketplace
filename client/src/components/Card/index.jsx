@@ -16,7 +16,7 @@ const Card = ({ data, open = false }) => {
   useEffect(() => {
     console.log(data);
     if (
-      data?.category === "Rentals" &&
+      data?.category === "rentals" &&
       Object.keys(data?.utilities)?.length > 0
     ) {
       let temp = [];
@@ -29,7 +29,7 @@ const Card = ({ data, open = false }) => {
       setUtilities(temp);
     }
     if (
-      data?.category === "Mattresses" &&
+      data?.category === "mattresses" &&
       Object.keys(data?.about)?.length > 0
     ) {
       let temp = [];

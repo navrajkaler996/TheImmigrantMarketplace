@@ -88,7 +88,7 @@ const MainHeader = () => {
         <a className="navigation-text" href="#">
           Electronics
         </a>
-        <Link className="navigation-text" to="/browse/rentals">
+        <Link className="navigation-text" to="/rentals">
           Rentals
         </Link>
       </div>

@@ -17,7 +17,6 @@ const Home = () => {
   }, []);
 
   const generateList = (list, category) => {
-    console.log("sss", list);
     return list.filter((l) => l.category === category);
   };
 
@@ -26,7 +25,7 @@ const Home = () => {
       {/*Latest rentals*/}
       {list?.length > 0 && (
         <Carousal
-          list={generateList(list, "Rentals")}
+          list={generateList(list, "rentals")}
           loading={loading}
           heading="Latest rentals"
         />
@@ -34,7 +33,7 @@ const Home = () => {
 
       {list?.length > 0 && (
         <Carousal
-          list={generateList(list, "Mattresses")}
+          list={generateList(list, "mattresses")}
           loading={loading}
           heading="Latest Mattresses"
         />
