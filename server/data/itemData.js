@@ -1,7 +1,7 @@
 export const itemData = [
   {
     itemName: "2 bed 2 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 550,
     utilities: {
       heating: true,
@@ -23,7 +23,7 @@ export const itemData = [
   },
   {
     itemName: "2 bed 1 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 350,
     utilities: {
       heating: true,
@@ -45,7 +45,7 @@ export const itemData = [
   },
   {
     itemName: "3 bed 2 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 1050,
     utilities: {
       heating: false,
@@ -67,7 +67,7 @@ export const itemData = [
   },
   {
     itemName: "1 bed 1 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 450,
     utilities: {
       heating: true,
@@ -89,7 +89,7 @@ export const itemData = [
   },
   {
     itemName: "2 bed 1 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 450,
     utilities: {
       heating: true,
@@ -111,7 +111,7 @@ export const itemData = [
   },
   {
     itemName: "1 bed 1 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 550,
     utilities: {
       heating: true,
@@ -133,7 +133,7 @@ export const itemData = [
   },
   {
     itemName: "1 bed 1 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 600,
     utilities: {
       heating: true,
@@ -155,7 +155,7 @@ export const itemData = [
   },
   {
     itemName: "1 bed 1 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 400,
     utilities: {
       heating: true,
@@ -177,7 +177,7 @@ export const itemData = [
   },
   {
     itemName: "3 bed 2 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 1500,
     utilities: {
       heating: true,
@@ -199,7 +199,7 @@ export const itemData = [
   },
   {
     itemName: "3 bed 1 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 1200,
     utilities: {
       heating: true,
@@ -221,7 +221,7 @@ export const itemData = [
   },
   {
     itemName: "2 bed 1 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 1100,
     utilities: {
       heating: true,
@@ -243,7 +243,7 @@ export const itemData = [
   },
   {
     itemName: "3 bed 1.5 bath",
-    category: "Rentals",
+    category: "rentals",
     price: 1700,
     utilities: {
       heating: true,
@@ -265,7 +265,7 @@ export const itemData = [
   },
   {
     itemName: "Polyester mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 150,
     utilities: {},
     about: {
@@ -286,7 +286,7 @@ export const itemData = [
   },
   {
     itemName: "Spring mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 100,
     utilities: {},
     about: {
@@ -307,7 +307,7 @@ export const itemData = [
   },
   {
     itemName: "Spring mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 100,
     utilities: {},
     about: {
@@ -328,7 +328,7 @@ export const itemData = [
   },
   {
     itemName: "Cotton mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 120,
     utilities: {},
     about: {
@@ -349,7 +349,7 @@ export const itemData = [
   },
   {
     itemName: "Foam mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 150,
     utilities: {},
     about: {
@@ -370,7 +370,7 @@ export const itemData = [
   },
   {
     itemName: "Spring mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 100,
     utilities: {},
     about: {
@@ -391,7 +391,7 @@ export const itemData = [
   },
   {
     itemName: "Foam mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 200,
     utilities: {},
     about: {
@@ -412,7 +412,7 @@ export const itemData = [
   },
   {
     itemName: "Cotton mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 120,
     utilities: {},
     about: {
@@ -433,7 +433,7 @@ export const itemData = [
   },
   {
     itemName: "Polyester mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 150,
     utilities: {},
     about: {
@@ -454,7 +454,7 @@ export const itemData = [
   },
   {
     itemName: "Spring mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 100,
     utilities: {},
     about: {
@@ -475,7 +475,7 @@ export const itemData = [
   },
   {
     itemName: "Polyester mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 150,
     utilities: {},
     about: {
@@ -496,7 +496,7 @@ export const itemData = [
   },
   {
     itemName: "Foam mattress",
-    category: "Mattresses",
+    category: "mattresses",
     price: 150,
     utilities: {},
     about: {

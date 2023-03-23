@@ -1,17 +1,17 @@
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, BrowserRouter } from "react-router-dom";
 
 /////PAGES
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Register from "./pages/CreateAccount";
+import Items from "./pages/Items";
 
 /////COMPONENTS
 import Footer from "./components/Footer";
 import MainHeader from "./components/MainHeader";
 import Login from "./pages/Login";
 import SecondaryHeader from "./components/SecondaryHeader";
-import Browse from "./pages/Browse";
 
 const App = () => {
   const location = useLocation();
@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/browse/:category" element={<Browse />} />
+        <Route path="/:category" element={<Items />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* <Footer /> */}

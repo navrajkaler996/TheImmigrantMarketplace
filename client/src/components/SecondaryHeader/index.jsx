@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Hamburger from "../Hamburger";
 import Logo from "../../assets/Logo-1.png";
+import { Link } from "react-router-dom";
 
 const SecondaryHeader = () => {
   const dispatch = useDispatch();
@@ -80,15 +81,15 @@ const SecondaryHeader = () => {
         <a className="navigation-text" href="#">
           Home
         </a>
-        <a className="navigation-text" href="#">
+        <Link className="navigation-text" to="/mattresses">
           Mattress
-        </a>
+        </Link>
         <a className="navigation-text" href="#">
           Electronics
         </a>
-        <a className="navigation-text" href="#">
+        <Link className="navigation-text" to="/rentals">
           Rentals
-        </a>
+        </Link>
       </div>
 
       {/* MAIN HEADER LOGO */}

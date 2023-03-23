@@ -683,6 +683,18 @@ big-desk
   width: 100%;
 }
 
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.items-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 *,
 ::after,
 ::before {

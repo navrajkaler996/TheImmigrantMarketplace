@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  ITEM_LIST_BY_CATEGORY_FAIL,
+  ITEM_LIST_BY_CATEGORY_REQUEST,
+  ITEM_LIST_BY_CATEGORY_SUCCESS,
   ITEM_LIST_FAIL,
   ITEM_LIST_REQUEST,
   ITEM_LIST_SUCCESS,
@@ -45,13 +48,35 @@ export const itemList =
     }
   };
 
-
 export const itemListByCategory = (category) => async (dispatch) => {
-
   try {
-    
-  } catch (error) {
-    
-  }
+    dispatch({
+      type: ITEM_LIST_BY_CATEGORY_REQUEST,
+      payload: { loading: true },
+    });
 
-}
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    const { data } = await axios(
+      `http://localhost:4000/api/item/getItemsByCategory/${category}`,
+      config
+    );
+
+    dispatch({
+      type: ITEM_LIST_BY_CATEGORY_SUCCESS,
+      payload: { loading: false, list: data?.items },
+    });
+  } catch (error) {
+    dispatch({
+      type: ITEM_LIST_BY_CATEGORY_FAIL,
+      payload: {
+        loading: false,
+        error: error,
+      },
+    });
+  }
+};
