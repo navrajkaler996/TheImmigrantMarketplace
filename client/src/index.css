@@ -76,6 +76,9 @@ big-desk
     font-size: 2.5rem;
   }
 }
+.primary-heading-items {
+  margin-top: 3rem;
+}
 
 .secondary-heading {
   font-size: 2rem;

@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import MainHeader from "./components/MainHeader";
 import Login from "./pages/Login";
 import SecondaryHeader from "./components/SecondaryHeader";
+import Item from "./pages/Item";
 
 const App = () => {
   const location = useLocation();
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/:category" element={<Items />} />
+        <Route path="/item/:category/:id" element={<Item />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* <Footer /> */}
