@@ -8,13 +8,12 @@ import PreviousArrow from "../../assets/back-white.png";
 
 // import Sample from "/images/items/rentals/image-sample.jpeg";
 
-const Card = ({ data, open = false }) => {
+const Card = ({ data, onClick, open = false }) => {
   const [utilities, setUtilities] = useState([]);
   const [about, setAbout] = useState([]);
 
-  /////CREATING UTILITIES ARRAY FOR RENTALS
   useEffect(() => {
-    console.log(data);
+    /////CREATING UTILITIES ARRAY FOR RENTALS
     if (
       data?.category === "rentals" &&
       Object.keys(data?.utilities)?.length > 0
@@ -28,6 +27,8 @@ const Card = ({ data, open = false }) => {
       }
       setUtilities(temp);
     }
+
+    /////CREATING ABOUT ARRAY FOR RENTALS
     if (
       data?.category === "mattresses" &&
       Object.keys(data?.about)?.length > 0
@@ -37,8 +38,6 @@ const Card = ({ data, open = false }) => {
       setAbout(temp);
     }
   }, [data]);
-
-  console.log(about);
 
   if (open) {
     return <div className="card"></div>;
@@ -67,7 +66,7 @@ const Card = ({ data, open = false }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card" onClick={onClick}>
       {data?.images?.length > 0 && (
         <div className="card__image--container">
           <img

@@ -3,6 +3,7 @@ import NextArrow from "../../assets/next.png";
 import PreviousArrow from "../../assets/back.png";
 import Spinner from "../Spinner";
 import Card from "../Card";
+import { useNavigate } from "react-router-dom";
 
 const responsiveMargins = {
   phone: 36,
@@ -17,6 +18,8 @@ const cardsToDisplay = {
 };
 
 const Carousal = ({ list, loading, heading, children }) => {
+  const navigate = useNavigate();
+
   const [margin, setMargin] = useState(0);
   const [clicked, setClicked] = useState(-1);
 
@@ -107,11 +110,21 @@ const Carousal = ({ list, loading, heading, children }) => {
               if (i === list.length - 1)
                 return (
                   <>
-                    <Card data={item} />
+                    <Card
+                      data={item}
+                      onClick={() =>
+                        navigate(`/item/${item.category}/${item._id}`)
+                      }
+                    />
                     <Card data={item} open={true} />
                   </>
                 );
-              return <Card data={item} />;
+              return (
+                <Card
+                  data={item}
+                  onClick={() => navigate(`/item/${item.category}/${item._id}`)}
+                />
+              );
             })}
           </div>
         </div>
