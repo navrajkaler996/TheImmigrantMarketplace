@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
   return (
@@ -23,15 +23,14 @@ const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
             </li>
           )}
           <li className="navigation__item">
-            <a href="#" className="navigation__link">
-              {" "}
+            <Link className="navigation__link" to="/">
               Home
-            </a>
+            </Link>
           </li>
           <li className="navigation__item">
-            <a href="#" className="navigation__link">
+            <Link className="navigation__link" to="/mattresses" reloadDocument>
               Mattress
-            </a>
+            </Link>
           </li>
           <li className="navigation__item">
             <a href="#" className="navigation__link">
@@ -39,9 +38,9 @@ const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
             </a>
           </li>
           <li className="navigation__item">
-            <a href="#" className="navigation__link">
+            <Link className="navigation__link" to="/rentals" reloadDocument>
               Rentals
-            </a>
+            </Link>
           </li>
           <li className="navigation__item">
             <a href="#" className="navigation__link">
@@ -65,33 +64,32 @@ const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
           </li>
           {!loggedIn ? (
             <li className="navigation__item">
-              <NavLink
-                to="/login"
-                className="navigation__link navigation__link2">
+              <Link to="/login" className="navigation__link navigation__link2">
                 Login
-              </NavLink>
+              </Link>
               <hr className="navigation__divider" />
 
-              <NavLink
+              <Link
                 to="/register"
                 className="navigation__link navigation__link2">
                 Create an account
-              </NavLink>
+              </Link>
             </li>
           ) : (
             <li className="navigation__item">
-              <NavLink
+              <Link
                 to="/profile"
                 className="navigation__link navigation__link2">
                 Profile
-              </NavLink>
+              </Link>
 
               <hr className="navigation__divider" />
-              <NavLink
+
+              <Link
                 className="navigation__link navigation__link2"
                 onClick={logoutHandler}>
                 Logout
-              </NavLink>
+              </Link>
             </li>
           )}
         </ul>
