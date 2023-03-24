@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../assets/Logo-1.png";
 import SearchIcon from "../../assets/Search-icon.png";
 import LoginIcon from "../../assets/Login-icon.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Hamburger from "../Hamburger";
 import { logout } from "../../actions/userActions";
 
 const MainHeader = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { userInfo } = useSelector((state) => state.users?.login);
 
   const [showDropdown, setShowDropdown] = useState(false);
 
-  useEffect(() => {}, [userInfo]);
+  useEffect(() => {}, [userInfo, location]);
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -79,12 +80,12 @@ const MainHeader = () => {
       </div>
 
       <div className="main-header__navigation main-header__navigation-1">
-        <a className="navigation-text" href="#">
+        <Link className="navigation-text" to="/">
           Home
-        </a>
-        <a className="navigation-text" href="#">
+        </Link>
+        <Link className="navigation-text" to="/mattresses">
           Mattress
-        </a>
+        </Link>
         <a className="navigation-text" href="#">
           Electronics
         </a>
@@ -115,18 +116,18 @@ const MainHeader = () => {
         </a>
       </div>
       <div className="main-header__navigation main-header__navigation-3">
-        <a className="navigation-text" href="#">
+        <Link className="navigation-text" to="/">
           Home
-        </a>
-        <a className="navigation-text" href="#">
+        </Link>
+        <Link className="navigation-text" to="/mattresses">
           Mattress
-        </a>
+        </Link>
         <a className="navigation-text" href="#">
           Electronics
         </a>
-        <a className="navigation-text" href="#">
+        <Link className="navigation-text" to="/rentals">
           Rentals
-        </a>
+        </Link>
         <a className="navigation-text" href="#">
           Vehicles
         </a>

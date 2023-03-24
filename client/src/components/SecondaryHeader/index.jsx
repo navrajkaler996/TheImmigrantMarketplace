@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Hamburger from "../Hamburger";
 import Logo from "../../assets/Logo-1.png";
 import { Link } from "react-router-dom";
+import { logout } from "../../actions/userActions";
 
 const SecondaryHeader = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const SecondaryHeader = () => {
       className="main-header secondary-header"
       style={{ position: "relative" }}>
       <div className="main-header__utilities">
-        {/* {userInfo ? (
+        {userInfo ? (
           <div className="main-header__utilities--container">
             <input
               type="button"
@@ -63,11 +64,13 @@ const SecondaryHeader = () => {
             )}
           </div>
         ) : (
-          <Link to="/login">
+          <Link
+            to="/login"
+            className=" main-header__utilities--login secondary-header--login">
             {" "}
-            <img src={LoginIcon} className="main-header__utilities--login" />
+            Login
           </Link>
-        )} */}
+        )}{" "}
         <div className="main-header__utilities--hamburger">
           <Hamburger
             loggedIn={userInfo?.token ? true : false}
@@ -78,9 +81,9 @@ const SecondaryHeader = () => {
       </div>
 
       <div className="main-header__navigation main-header__navigation-1 secondary-header--navigation">
-        <a className="navigation-text" href="#">
+        <Link className="navigation-text" to="/">
           Home
-        </a>
+        </Link>
         <Link className="navigation-text" to="/mattresses">
           Mattress
         </Link>
@@ -112,19 +115,20 @@ const SecondaryHeader = () => {
           sell
         </a>
       </div>
+
       <div className="main-header__navigation main-header__navigation-3">
-        <a className="navigation-text" href="#">
+        <Link className="navigation-text" to="/">
           Home
-        </a>
-        <a className="navigation-text" href="#">
+        </Link>
+        <Link className="navigation-text" to="/mattresses">
           Mattress
-        </a>
+        </Link>
         <a className="navigation-text" href="#">
           Electronics
         </a>
-        <a className="navigation-text" href="#">
+        <Link className="navigation-text" to="/rentals">
           Rentals
-        </a>
+        </Link>
         <a className="navigation-text" href="#">
           Vehicles
         </a>
