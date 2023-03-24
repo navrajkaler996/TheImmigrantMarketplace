@@ -2,6 +2,9 @@ import {
   ITEM_LIST_BY_CATEGORY_FAIL,
   ITEM_LIST_BY_CATEGORY_REQUEST,
   ITEM_LIST_BY_CATEGORY_SUCCESS,
+  ITEM_LIST_BY_ID_FAIL,
+  ITEM_LIST_BY_ID_REQUEST,
+  ITEM_LIST_BY_ID_SUCCESS,
   ITEM_LIST_FAIL,
   ITEM_LIST_REQUEST,
   ITEM_LIST_SUCCESS,
@@ -55,6 +58,29 @@ export const itemListReducer = (
     }
 
     case ITEM_LIST_BY_CATEGORY_FAIL: {
+      return {
+        ...state,
+        loading: action?.payload?.loading,
+        error: action?.payload?.error,
+      };
+    }
+
+    case ITEM_LIST_BY_ID_FAIL: {
+      return {
+        ...state,
+        loading: action?.payload?.loading,
+      };
+    }
+
+    case ITEM_LIST_BY_ID_SUCCESS: {
+      return {
+        ...state,
+        loading: action?.payload?.loading,
+        listItem: action?.payload?.listItem,
+      };
+    }
+
+    case ITEM_LIST_BY_ID_REQUEST: {
       return {
         ...state,
         loading: action?.payload?.loading,

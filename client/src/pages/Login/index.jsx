@@ -15,7 +15,7 @@ const Login = () => {
   const { loading, userInfo, error } = useSelector(
     (state) => state?.users?.login
   );
-  console.log(error);
+
   const [form, setForm] = useState({
     email: "",
     password: "",

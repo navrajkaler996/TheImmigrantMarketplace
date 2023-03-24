@@ -16,7 +16,6 @@ import Item from "./pages/Item";
 
 const App = () => {
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <>

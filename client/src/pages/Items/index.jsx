@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { itemListByCategory } from "../../actions/itemActions";
 import Card from "../../components/Card";
+import Spinner from "../../components/Spinner";
 
 const Items = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const Items = () => {
   const { category } = useParams();
   const { items } = useSelector((state) => state.users);
 
-  const { list } = items;
+  const { list, loading } = items;
 
   // const [y, setY] = useState(0);
 
@@ -38,9 +39,20 @@ const Items = () => {
   return (
     <div className="items">
       <h1 className="primary-heading primary-heading-items">{category}</h1>
-      <div className="items-container">
-        {list?.length > 0 &&
-          list.map(
+      {loading && (
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "20rem",
+          }}>
+          <Spinner color="#590d22" />
+        </div>
+      )}
+      {!loading && list?.length > 0 && (
+        <div className="items-container">
+          {list.map(
             (item) =>
               item.category === category && (
                 <Card
@@ -49,7 +61,8 @@ const Items = () => {
                 />
               )
           )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
