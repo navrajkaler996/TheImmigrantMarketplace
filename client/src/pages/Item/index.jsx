@@ -133,7 +133,9 @@ const Item = () => {
               </div>
               <div className="card__details--item item-details__description--margin">
                 <img src={PhoneIcon} className="card__details--item-img" />
-                <span className="card__details--item-text item-details__description--margin-2"></span>
+                <span className="card__details--item-text item-details__description--margin-2">
+                  {data?.sellerMobile}
+                </span>
               </div>
               <div className="card__details--item item-details__description--margin">
                 <img src={AddressIcon} className="card__details--item-img" />

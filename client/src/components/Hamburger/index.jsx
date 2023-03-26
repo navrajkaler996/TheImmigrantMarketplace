@@ -29,7 +29,7 @@ const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
           </li>
           <li className="navigation__item">
             <Link className="navigation__link" to="/mattresses" reloadDocument>
-              Mattress
+              Mattresses
             </Link>
           </li>
           <li className="navigation__item">

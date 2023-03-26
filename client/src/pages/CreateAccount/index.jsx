@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { createAccount } from "../../actions/userActions";
+import { useLocation, useNavigate } from "react-router-dom";
+import { createAccount, createAccountClear } from "../../actions/userActions";
 import Spinner from "../../components/Spinner";
 import { regex } from "../../utils/regexConstants";
 
 const CreateAccount = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { loading, userInfo } = useSelector(
     (state) => state?.users?.createAccount
   );
@@ -16,6 +17,8 @@ const CreateAccount = () => {
     email: "",
     password: "",
     city: "",
+    buy: false,
+    sell: false,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -24,6 +27,8 @@ const CreateAccount = () => {
     email: false,
     password: false,
     city: false,
+    buy: true,
+    sell: true,
   });
 
   const [showToolTip, setShowToolTip] = useState({
@@ -40,13 +45,16 @@ const CreateAccount = () => {
 
   useEffect(() => {
     /////Redirecting to login page if account created successfully
-    if (userInfo?.status === 201)
+    if (userInfo?.status === 201) {
+      dispatch(createAccountClear());
+
       return navigate("/login", {
         replace: true,
         state: {
           redirectedFrom: "createAccount",
         },
       });
+    }
   }, [userInfo]);
 
   /////Validators
@@ -112,6 +120,22 @@ const CreateAccount = () => {
   //Validating city
   const validateCity = (e) => {};
 
+  //Validating Buy
+  const validateBuy = (e, temp) => {
+    setFormErrors({
+      ...formErrors,
+      [e.target.name]: !temp,
+    });
+  };
+
+  //Validating Sell
+  const validateSell = (e, temp) => {
+    setFormErrors({
+      ...formErrors,
+      [e.target.name]: !temp,
+    });
+  };
+
   /////Display tool tip
   const toolTipHandler = (name) => {
     setShowToolTip({
@@ -127,11 +151,35 @@ const CreateAccount = () => {
     if (e.target.name === "email") validateEmail(e);
     if (e.target.name === "mobileNumber") validateMobileNumber(e);
     if (e.target.name === "password") validatePassword(e);
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+
+    //////SEPERATELY CHECKING FOR CHECKBOX
+    if (e.target.name === "buy" || e.target.name === "sell") {
+      let temp;
+      if (e.target.name === "buy") {
+        temp = !form.buy;
+
+        setForm({
+          ...form,
+          [e.target.name]: temp,
+        });
+        validateBuy(e, temp);
+      } else if (e.target.name === "sell") {
+        temp = !form.sell;
+        setForm({
+          ...form,
+          [e.target.name]: temp,
+        });
+        validateSell(e, temp);
+      }
+    } else {
+      setForm({
+        ...form,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
+
+  // console.log(form.sell, formErrors.sell);
 
   const submitHandler = () => {
     if (
@@ -149,10 +197,25 @@ const CreateAccount = () => {
           form.mobileNumber,
           form.email,
           form.password,
-          form.city
+          form.city,
+          {
+            buy: form.buy,
+            sell: form.sell,
+          }
         )
       );
     }
+  };
+
+  const disableSubmit = (errors, buyError, sellError) => {
+    if (!errors) {
+      if (buyError && sellError) return false;
+      if (buyError && !sellError) return false;
+      if (!buyError && sellError) return false;
+      if (!buyError && !sellError) return true;
+    }
+
+    return true;
   };
 
   return (
@@ -295,17 +358,46 @@ const CreateAccount = () => {
                   <option value="Thompson">Thompson</option>
                 </select>
               </div>
+              <div
+                className="create-account__form--input-container"
+                style={{ marginBottom: "0" }}>
+                <label className="create-account__form--label">
+                  I want to:
+                </label>
+                <div className="create-account__form--input-checkbox">
+                  <div className="create-account__form--input-checkbox-1">
+                    <input
+                      type={"checkbox"}
+                      name="buy"
+                      value={form.buy}
+                      onChange={(e) => changeHandler(e)}
+                    />{" "}
+                    <label>Buy</label>
+                  </div>
+                  <div className="create-account__form--input-checkbox-2">
+                    <input
+                      type={"checkbox"}
+                      name="sell"
+                      value={form.sell}
+                      onChange={(e) => changeHandler(e)}
+                    />{" "}
+                    <label>Sell</label>
+                  </div>
+                </div>
+              </div>
               <div className="create-account__form--input-container">
                 <input
                   type="submit"
                   className="create-account__form--input create-account__form--input-submit button-success"
-                  disabled={
+                  disabled={disableSubmit(
                     form.fullName?.length === 0 ||
-                    form.email?.length === 0 ||
-                    form.mobileNumber?.length === 0 ||
-                    form.password?.length === 0 ||
-                    form.city?.length === 0
-                  }
+                      form.email?.length === 0 ||
+                      form.mobileNumber?.length === 0 ||
+                      form.password?.length === 0 ||
+                      form.city?.length === 0,
+                    form.buy,
+                    form.sell
+                  )}
                   onClick={submitHandler}
                 />
                 {mainError && (

@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  USER_CLEAR_CREATE_ACCOUNT,
   USER_CREATE_ACCOUNT_FAIL,
   USER_CREATE_ACCOUNT_REQUEST,
   USER_CREATE_ACCOUNT_SUCCESS,
@@ -10,7 +11,7 @@ import {
 } from "../utils/actionConstants";
 
 export const createAccount =
-  (fullName, mobileNumber, email, password, city) => async (dispatch) => {
+  (fullName, mobileNumber, email, password, city, type) => async (dispatch) => {
     try {
       dispatch({
         type: USER_CREATE_ACCOUNT_REQUEST,
@@ -22,7 +23,7 @@ export const createAccount =
           "Content-type": "application/json",
         },
       };
-      const body = { fullName, mobileNumber, email, password, city };
+      const body = { fullName, mobileNumber, email, password, city, type };
 
       const { data } = await axios.post(
         "http://localhost:4000/api/user/createaccount",
@@ -98,4 +99,14 @@ export const logout = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
 
   document.location.href = "/login";
+};
+
+export const createAccountClear = () => async (dispatch) => {
+  dispatch({
+    type: USER_CLEAR_CREATE_ACCOUNT,
+    payload: {
+      loading: false,
+      data: {},
+    },
+  });
 };

@@ -69,6 +69,18 @@
       &-submit {
         margin-top: 2rem;
       }
+
+      &-checkbox {
+        display: flex;
+        margin-left: 0.4rem;
+        &-1 {
+          flex-grow: 1;
+        }
+
+        &-2 {
+          flex-grow: 2;
+        }
+      }
     }
 
     &--dropdown-container {
