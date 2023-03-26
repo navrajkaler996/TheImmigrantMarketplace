@@ -18,8 +18,8 @@ export const userData = [
     password: "Passwords2*",
     city: "Winnipeg",
     type: {
-      buy: false,
-      sell: true,
+      buy: true,
+      sell: false,
     },
   },
 ];

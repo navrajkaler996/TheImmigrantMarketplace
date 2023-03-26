@@ -60,6 +60,7 @@ export const login = asyncHandler(async (req, res) => {
         mobileNumber: userExists.mobileNumber,
         password: userExists.password,
         isAdmin: userExists.isAdmin,
+        type: userExists.type,
         /////Passing JWT token to the client-side everytime
         //the user signs in
         token: generateToken(userExists._id),
