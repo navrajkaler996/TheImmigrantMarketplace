@@ -8,7 +8,8 @@ import generateToken from "../utils/generateToken.js";
 /////CREATING ACCOUNT FOR USER
 //POST @ /api/user/createaccount
 export const createAccount = asyncHandler(async (req, res) => {
-  const { fullName, email, mobileNumber, password, city, isAdmin } = req.body;
+  const { fullName, email, mobileNumber, password, city, isAdmin, type } =
+    req.body;
 
   /////CHECK IF USER ALREADY EXISTS OR NOT
   const userExists = await User.findOne({ email });
@@ -27,6 +28,7 @@ export const createAccount = asyncHandler(async (req, res) => {
     password,
     city,
     isAdmin,
+    type,
   });
 
   if (user) {

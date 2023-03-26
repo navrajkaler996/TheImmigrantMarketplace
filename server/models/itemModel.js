@@ -34,6 +34,10 @@ const itemSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    sellerMobile: {
+      type: Number,
+      required: true,
+    },
     address: {
       type: String,
       required: true,

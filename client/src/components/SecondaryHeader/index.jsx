@@ -85,7 +85,7 @@ const SecondaryHeader = () => {
           Home
         </Link>
         <Link className="navigation-text" to="/mattresses">
-          Mattress
+          Mattresses
         </Link>
         <a className="navigation-text" href="#">
           Electronics
@@ -121,7 +121,7 @@ const SecondaryHeader = () => {
           Home
         </Link>
         <Link className="navigation-text" to="/mattresses">
-          Mattress
+          Mattresses
         </Link>
         <a className="navigation-text" href="#">
           Electronics

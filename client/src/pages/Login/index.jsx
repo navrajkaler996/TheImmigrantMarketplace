@@ -111,7 +111,7 @@ const Login = () => {
 
         {!loading && (
           <>
-            {location?.state?.redirectedFrom && (
+            {location?.state?.redirectedFrom === "createAccount" && (
               <p className="login-redirectedFrom-message">
                 Account created successfully | Please login
               </p>
@@ -184,7 +184,14 @@ const Login = () => {
 
                   <span
                     className="login-links-2"
-                    onClick={() => navigate("/register")}>
+                    onClick={() =>
+                      navigate("/register", {
+                        replace: true,
+                        state: {
+                          redirectedFrom: null,
+                        },
+                      })
+                    }>
                     create an account
                   </span>
                 </div>

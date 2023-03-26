@@ -367,7 +367,7 @@ big-desk
   text-decoration: none;
   text-transform: uppercase;
   color: #fff;
-  margin: 0.5rem 3rem 0 0;
+  margin: 1.5rem 3rem 0 0;
 }
 
 .navigation__checkbox {
@@ -663,6 +663,16 @@ big-desk
 }
 .create-account__form--input-submit {
   margin-top: 2rem;
+}
+.create-account__form--input-checkbox {
+  display: flex;
+  margin-left: 0.4rem;
+}
+.create-account__form--input-checkbox-1 {
+  flex-grow: 1;
+}
+.create-account__form--input-checkbox-2 {
+  flex-grow: 2;
 }
 .create-account__form--dropdown-container {
   display: flex;

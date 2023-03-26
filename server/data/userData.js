@@ -6,6 +6,10 @@ export const userData = [
     password: "Passwords2*",
     city: "Winnipeg",
     isAdmin: true,
+    type: {
+      buy: true,
+      sell: true,
+    },
   },
   {
     fullName: "Avneet kaur",
@@ -13,5 +17,9 @@ export const userData = [
     email: "avneetkaur@gmail.com",
     password: "Passwords2*",
     city: "Winnipeg",
+    type: {
+      buy: false,
+      sell: true,
+    },
   },
 ];
