@@ -5,6 +5,7 @@ import { login } from "../../actions/userActions";
 import Logo from "../../assets/Logo-1.png";
 import Spinner from "../../components/Spinner";
 import { regex } from "../../utils/regexConstants";
+import AfterLogin from "./components/AfterLogin";
 
 const Login = () => {
   const location = useLocation();
@@ -33,10 +34,10 @@ const Login = () => {
   const [mainError, setMainError] = useState(false);
 
   useEffect(() => {
-    if (userInfo && Object.keys(userInfo)?.length > 0) {
-      alert(`User ${userInfo?.fullName} successfully logged in!`);
-      return navigate("/home");
-    }
+    // if (userInfo && Object.keys(userInfo)?.length > 0) {
+    //   alert(`User ${userInfo?.fullName} successfully logged in!`);
+    //   return navigate("/home");
+    // }
   }, [userInfo]);
 
   useEffect(() => {
@@ -104,11 +105,26 @@ const Login = () => {
     }
   };
 
+  if (userInfo && Object.keys(userInfo)?.length > 0 && userInfo) {
+    if (!userInfo?.type?.sell && userInfo?.type?.buy) {
+      return navigate("/home");
+    }
+
+    return (
+      <div className="create-account">
+        <div
+          className="create-account__container"
+          style={{ justifyContent: "start" }}>
+          {userInfo?.type?.sell && userInfo?.type?.buy && <AfterLogin />}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="create-account">
       <div className="create-account__container">
         {loading && <Spinner />}
-
         {!loading && (
           <>
             {location?.state?.redirectedFrom === "createAccount" && (
