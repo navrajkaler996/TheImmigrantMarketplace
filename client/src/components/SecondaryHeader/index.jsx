@@ -84,13 +84,13 @@ const SecondaryHeader = () => {
         <Link className="navigation-text" to="/">
           Home
         </Link>
-        <Link className="navigation-text" to="/mattresses">
+        <Link className="navigation-text" to="/items/mattresses">
           Mattresses
         </Link>
         <a className="navigation-text" href="#">
           Electronics
         </a>
-        <Link className="navigation-text" to="/rentals">
+        <Link className="navigation-text" to="/items/rentals">
           Rentals
         </Link>
       </div>
@@ -120,13 +120,13 @@ const SecondaryHeader = () => {
         <Link className="navigation-text" to="/">
           Home
         </Link>
-        <Link className="navigation-text" to="/mattresses">
+        <Link className="navigation-text" to="/items/mattresses">
           Mattresses
         </Link>
         <a className="navigation-text" href="#">
           Electronics
         </a>
-        <Link className="navigation-text" to="/rentals">
+        <Link className="navigation-text" to="/items/rentals">
           Rentals
         </Link>
         <a className="navigation-text" href="#">
