@@ -13,6 +13,7 @@ import MainHeader from "./components/MainHeader";
 import Login from "./pages/Login";
 import SecondaryHeader from "./components/SecondaryHeader";
 import Item from "./pages/Item";
+import SellerDashboard from "./pages/SellerDashboard";
 
 const App = () => {
   const location = useLocation();
@@ -31,8 +32,9 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/:category" element={<Items />} />
+        <Route path="/items/:category" element={<Items />} />
         <Route path="/item/:category/:id" element={<Item />} />
+        <Route path="/dashboard" element={<SellerDashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* <Footer /> */}

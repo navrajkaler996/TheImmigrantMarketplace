@@ -15,7 +15,9 @@ const AfterLogin = () => {
         <Link className="afterlogin-link" to="/home">
           Buyer
         </Link>{" "}
-        <Link className="afterlogin-link">Seller</Link>
+        <Link className="afterlogin-link" to="/dashboard">
+          Seller
+        </Link>
       </div>
     </div>
   );

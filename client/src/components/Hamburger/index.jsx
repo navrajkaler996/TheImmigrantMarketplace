@@ -28,7 +28,10 @@ const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
             </Link>
           </li>
           <li className="navigation__item">
-            <Link className="navigation__link" to="/mattresses" reloadDocument>
+            <Link
+              className="navigation__link"
+              to="/items/mattresses"
+              reloadDocument>
               Mattresses
             </Link>
           </li>
@@ -38,7 +41,10 @@ const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
             </a>
           </li>
           <li className="navigation__item">
-            <Link className="navigation__link" to="/rentals" reloadDocument>
+            <Link
+              className="navigation__link"
+              to="/items/rentals"
+              reloadDocument>
               Rentals
             </Link>
           </li>

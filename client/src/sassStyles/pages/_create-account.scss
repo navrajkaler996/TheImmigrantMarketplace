@@ -48,12 +48,10 @@
       border-radius: 10rem;
       padding-left: 2rem;
       font-size: 1.6rem;
-      transition: all 0.2s ease-in;
+      // transition: all 0.2s ease-in;
 
       &:focus {
         outline: none;
-        box-shadow: $box-shadow-3;
-        transform: scale(1.04);
       }
 
       &-dropdown {

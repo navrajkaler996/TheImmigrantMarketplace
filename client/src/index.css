@@ -647,12 +647,9 @@ big-desk
   border-radius: 10rem;
   padding-left: 2rem;
   font-size: 1.6rem;
-  transition: all 0.2s ease-in;
 }
 .create-account__form--input:focus {
   outline: none;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  transform: scale(1.04);
 }
 .create-account__form--input-dropdown {
   background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+) no-repeat 100% 50%;
@@ -712,6 +709,35 @@ big-desk
 }
 .login-links-2 {
   cursor: pointer;
+}
+
+.afterlogin-container {
+  margin-top: 15rem;
+  text-align: center;
+}
+.afterlogin-container p {
+  letter-spacing: 0.2rem;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+.afterlogin-links {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+.afterlogin-link {
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  font-size: 2rem;
+  padding: 1rem 4rem;
+  border-radius: 10rem;
+  transition: all 0.1s;
+}
+.afterlogin-link:hover {
+  background-color: #ff4d6d;
+  font-weight: 700;
 }
 
 .home__container {
@@ -819,33 +845,70 @@ big-desk
   font-weight: 700;
 }
 
-.afterlogin-container {
-  margin-top: 15rem;
+.sellerdashboard-container {
+  padding: 2rem;
+  box-sizing: border-box;
+  margin-top: 5rem;
+  min-height: calc(100vh - 15rem);
+  display: flex;
+}
+.sellerdashboard-listings {
+  width: 60%;
+  height: fit-content;
+  border: 1px solid #ccc;
+  border-radius: 3rem 3rem 3rem 3rem;
+  padding: 2rem;
   text-align: center;
 }
-.afterlogin-container p {
-  letter-spacing: 0.2rem;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
+.sellerdashboard-todo {
+  width: 40%;
+  height: fit-content;
+  border: 1px solid #ccc;
+  border-radius: 3rem 3rem 3rem 3rem;
+  padding: 2rem 4rem;
+  margin-left: 4rem;
 }
-.afterlogin-links {
+.sellerdashboard-todo ul li {
+  margin: 0.5rem 0;
+}
+.sellerdashboard-todo__link {
+  cursor: pointer;
+}
+
+.listings-form {
+  padding: 1rem 2rem;
+}
+.listings-form--input-container {
   display: flex;
-  justify-content: space-around;
+  align-items: flex-start;
+}
+.listings-form--input-dropdown {
+  border: 1px solid #ccc;
+}
+
+.form-container--input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 60%;
+}
+.form-container--input-container:first-of-type {
   margin-top: 2rem;
 }
-.afterlogin-link {
-  cursor: pointer;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #000;
-  font-size: 2rem;
-  padding: 1rem 4rem;
-  border-radius: 10rem;
-  transition: all 0.1s;
+.form-container-rentals--input {
+  width: 90%;
 }
-.afterlogin-link:hover {
-  background-color: #ff4d6d;
-  font-weight: 700;
+.form-container-rentals--textarea {
+  height: auto;
+  border-radius: 1rem;
+  font-family: inherit;
+  padding-top: 1rem;
+}
+.form-container-rentals--checkbox-container {
+  display: flex;
+}
+.form-container-rentals--checkbox-container label {
+  margin-left: 1rem;
 }
 
 *,
