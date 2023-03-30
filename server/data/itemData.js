@@ -2,6 +2,7 @@ export const itemData = [
   {
     itemName: "2 bed 2 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 550,
     utilities: {
@@ -25,6 +26,7 @@ export const itemData = [
   {
     itemName: "2 bed 1 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 350,
     utilities: {
@@ -48,6 +50,7 @@ export const itemData = [
   {
     itemName: "3 bed 2 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 1050,
     utilities: {
@@ -71,6 +74,7 @@ export const itemData = [
   {
     itemName: "1 bed 1 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 450,
     utilities: {
@@ -94,6 +98,7 @@ export const itemData = [
   {
     itemName: "2 bed 1 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 450,
     utilities: {
@@ -117,6 +122,7 @@ export const itemData = [
   {
     itemName: "1 bed 1 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 550,
     utilities: {
@@ -140,6 +146,7 @@ export const itemData = [
   {
     itemName: "1 bed 1 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 600,
     utilities: {
@@ -163,6 +170,7 @@ export const itemData = [
   {
     itemName: "1 bed 1 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 400,
     utilities: {
@@ -186,6 +194,7 @@ export const itemData = [
   {
     itemName: "3 bed 2 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 1500,
     utilities: {
@@ -209,6 +218,7 @@ export const itemData = [
   {
     itemName: "3 bed 1 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 1200,
     utilities: {
@@ -232,6 +242,7 @@ export const itemData = [
   {
     itemName: "2 bed 1 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 1100,
     utilities: {
@@ -255,6 +266,7 @@ export const itemData = [
   {
     itemName: "3 bed 1.5 bath",
     category: "rentals",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 1700,
     utilities: {
@@ -278,6 +290,7 @@ export const itemData = [
   {
     itemName: "Polyester mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 150,
     utilities: {},
@@ -300,6 +313,7 @@ export const itemData = [
   {
     itemName: "Spring mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 100,
     utilities: {},
@@ -322,6 +336,7 @@ export const itemData = [
   {
     itemName: "Spring mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 100,
     utilities: {},
@@ -344,6 +359,7 @@ export const itemData = [
   {
     itemName: "Cotton mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 120,
     utilities: {},
@@ -366,6 +382,7 @@ export const itemData = [
   {
     itemName: "Foam mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 150,
     utilities: {},
@@ -388,6 +405,7 @@ export const itemData = [
   {
     itemName: "Spring mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 100,
     utilities: {},
@@ -410,6 +428,7 @@ export const itemData = [
   {
     itemName: "Foam mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 200,
     utilities: {},
@@ -432,6 +451,7 @@ export const itemData = [
   {
     itemName: "Cotton mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 120,
     utilities: {},
@@ -454,6 +474,7 @@ export const itemData = [
   {
     itemName: "Polyester mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 150,
     utilities: {},
@@ -476,6 +497,7 @@ export const itemData = [
   {
     itemName: "Spring mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 100,
     utilities: {},
@@ -498,6 +520,7 @@ export const itemData = [
   {
     itemName: "Polyester mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 150,
     utilities: {},
@@ -520,6 +543,7 @@ export const itemData = [
   {
     itemName: "Foam mattress",
     category: "mattresses",
+    postalCode: "R3J 0N9",
     sellerMobile: 9876543210,
     price: 150,
     utilities: {},

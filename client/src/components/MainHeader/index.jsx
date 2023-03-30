@@ -41,9 +41,9 @@ const MainHeader = () => {
                     <li>Profile</li>{" "}
                   </Link>
                   <Link
-                    to="/"
+                    to="/dashboard"
                     className="main-header__utilities--dropdown-list-item">
-                    <li>Purchases</li>
+                    <li>Dashboard</li>
                   </Link>
                   <Link
                     to="/"

@@ -1,5 +1,5 @@
 import {
-  USER_CLEAR_CREATE_ACCOUNT,
+  USER_CREATE_ACCOUNT_CLEAR,
   USER_CREATE_ACCOUNT_FAIL,
   USER_CREATE_ACCOUNT_REQUEST,
   USER_CREATE_ACCOUNT_SUCCESS,
@@ -38,7 +38,7 @@ export const userCreateAccountReducer = (state = {}, action) => {
       };
     }
 
-    case USER_CLEAR_CREATE_ACCOUNT: {
+    case USER_CREATE_ACCOUNT_CLEAR: {
       return {
         ...state,
         userInfo: action.payload?.data,

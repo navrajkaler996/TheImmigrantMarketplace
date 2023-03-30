@@ -42,6 +42,10 @@ const itemSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    postalCode: {
+      type: String,
+      required: true,
+    },
     type: {
       type: String,
       required: false,

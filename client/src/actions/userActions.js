@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-  USER_CLEAR_CREATE_ACCOUNT,
+  USER_CREATE_ACCOUNT_CLEAR,
   USER_CREATE_ACCOUNT_FAIL,
   USER_CREATE_ACCOUNT_REQUEST,
   USER_CREATE_ACCOUNT_SUCCESS,
@@ -103,7 +103,7 @@ export const logout = () => async (dispatch) => {
 
 export const createAccountClear = () => async (dispatch) => {
   dispatch({
-    type: USER_CLEAR_CREATE_ACCOUNT,
+    type: USER_CREATE_ACCOUNT_CLEAR,
     payload: {
       loading: false,
       data: {},

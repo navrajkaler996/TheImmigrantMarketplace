@@ -1,5 +1,9 @@
 import axios from "axios";
 import {
+  ITEM_ADD_CLEAR,
+  ITEM_ADD_FAIL,
+  ITEM_ADD_REQUEST,
+  ITEM_ADD_SUCCESS,
   ITEM_LIST_BY_CATEGORY_FAIL,
   ITEM_LIST_BY_CATEGORY_REQUEST,
   ITEM_LIST_BY_CATEGORY_SUCCESS,
@@ -9,6 +13,7 @@ import {
   ITEM_LIST_FAIL,
   ITEM_LIST_REQUEST,
   ITEM_LIST_SUCCESS,
+  USER_CREATE_ACCOUNT_CLEAR,
 } from "../utils/actionConstants";
 
 export const itemList =
@@ -120,4 +125,54 @@ export const itemListByID = (id) => async (dispatch) => {
       },
     });
   }
+};
+
+export const itemAdd = (body) => async (dispatch) => {
+  try {
+    dispatch({
+      type: ITEM_ADD_REQUEST,
+      payload: {
+        loading: true,
+        message: "",
+      },
+    });
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    const { data } = await axios.post(
+      `http://localhost:4000/api/item/addItem`,
+      body,
+      config
+    );
+
+    dispatch({
+      type: ITEM_ADD_SUCCESS,
+      payload: {
+        loading: false,
+        message: data,
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: ITEM_ADD_FAIL,
+      payload: {
+        loading: false,
+        error: error,
+      },
+    });
+  }
+};
+
+export const addItemtClear = () => async (dispatch) => {
+  dispatch({
+    type: ITEM_ADD_CLEAR,
+    payload: {
+      loading: false,
+      data: {},
+    },
+  });
 };

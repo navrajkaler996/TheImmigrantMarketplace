@@ -70,3 +70,54 @@ export const getItemById = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+/////INSERT AN ITEM
+//POST @ /api/item/addItem
+export const addItem = asyncHandler(async (req, res) => {
+  const {
+    itemName,
+    type,
+    price,
+    utilities,
+    address,
+    postalCode,
+    description,
+    sellerName,
+    sellerEmail,
+    sellerMobile,
+    category,
+    images,
+  } = req.body;
+
+  let item = await Item.create({
+    itemName,
+    type,
+    price,
+    utilities,
+    address,
+    postalCode,
+    description,
+    sellerName,
+    sellerEmail,
+    sellerMobile,
+    category,
+    images,
+  });
+  try {
+    if (item) {
+      res.status(201).json({
+        message: "Item inserted successfully",
+      });
+    } else {
+      res.status(400).json({
+        message: errorMessages.FETCHING_DATA,
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      message: errorMessages.FETCHING_DATA,
+    });
+
+    throw new Error(error);
+  }
+});
