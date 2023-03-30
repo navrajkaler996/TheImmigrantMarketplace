@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux";
 import {
+  ITEM_ADD_CLEAR,
+  ITEM_ADD_FAIL,
+  ITEM_ADD_REQUEST,
+  ITEM_ADD_SUCCESS,
   ITEM_LIST_BY_CATEGORY_FAIL,
   ITEM_LIST_BY_CATEGORY_REQUEST,
   ITEM_LIST_BY_CATEGORY_SUCCESS,
@@ -14,10 +19,9 @@ const userInfo =
   localStorage.getItem("userInfo")?.length > 0 &&
   JSON.parse(localStorage.getItem("userInfo"));
 
-export const itemListReducer = (
-  state = userInfo ? { userInfo } : {},
-  action
-) => {
+const initialState = {};
+
+export const itemListReducer = (state = initialState, action) => {
   switch (action.type) {
     case ITEM_LIST_REQUEST: {
       return {
@@ -85,6 +89,36 @@ export const itemListReducer = (
         ...state,
         loading: action?.payload?.loading,
         error: action?.payload?.error,
+      };
+    }
+
+    case ITEM_ADD_REQUEST: {
+      return {
+        ...state,
+        loading: action?.payload?.loading,
+      };
+    }
+
+    case ITEM_ADD_SUCCESS: {
+      return {
+        ...state,
+        loading: action?.payload?.loading,
+        itemAdded: action?.payload?.message,
+      };
+    }
+
+    case ITEM_ADD_FAIL: {
+      return {
+        ...state,
+        loading: action?.payload?.loading,
+        error: action?.payload?.error,
+      };
+    }
+
+    case ITEM_ADD_CLEAR: {
+      return {
+        ...state,
+        itemAdded: action?.payload?.data,
       };
     }
     default:

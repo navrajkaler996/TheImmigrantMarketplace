@@ -86,6 +86,14 @@ big-desk
   letter-spacing: 0.2rem;
   font-weight: 500;
 }
+.secondary-heading__success {
+  color: #00cd22;
+  font-weight: 600;
+}
+.secondary-heading__error {
+  color: #ff0e0e;
+  font-weight: 600;
+}
 
 .error-cross {
   position: absolute;
@@ -881,6 +889,7 @@ big-desk
 .listings-form--input-container {
   display: flex;
   align-items: flex-start;
+  margin-bottom: 0;
 }
 .listings-form--input-dropdown {
   border: 1px solid #ccc;
