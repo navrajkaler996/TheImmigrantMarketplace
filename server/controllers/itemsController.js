@@ -71,6 +71,30 @@ export const getItemById = asyncHandler(async (req, res) => {
   }
 });
 
+/////FETCHING ITEMS BY SELLER EMAIL
+//GET @ /api/item/getItemsByEmail
+export const getItemsByEmail = asyncHandler(async (req, res) => {
+  const email = req.body.sellerEmail;
+
+  let items = await Item.find({ sellerEmail: email });
+
+  try {
+    if (items) {
+      res.status(201).json({ items });
+    } else {
+      res.status(201).json({
+        message: errorMessages.FETCHING_DATA,
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      message: errorMessages.FETCHING_DATA,
+    });
+
+    throw new Error(error);
+  }
+});
+
 /////INSERT AN ITEM
 //POST @ /api/item/addItem
 export const addItem = asyncHandler(async (req, res) => {
