@@ -13,6 +13,6 @@ router.get("/getItems", getItems);
 router.get("/getItemsByCategory/:category", getItemsByCategory);
 router.get("/getItemsById/:id", getItemById);
 router.post("/addItem", addItem);
-router.get("/getItemsByEmail", getItemsByEmail);
+router.get("/getItemsByEmail/:email", getItemsByEmail);
 
 export default router;

@@ -34,6 +34,7 @@ export const getItemsByCategory = asyncHandler(async (req, res) => {
   try {
     let category = req.params.category;
     let items = await Item.find({ category: category });
+    items = items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     if (items) {
       res.status(201).json({
@@ -74,9 +75,10 @@ export const getItemById = asyncHandler(async (req, res) => {
 /////FETCHING ITEMS BY SELLER EMAIL
 //GET @ /api/item/getItemsByEmail
 export const getItemsByEmail = asyncHandler(async (req, res) => {
-  const email = req.body.sellerEmail;
+  const email = req.params.email;
 
   let items = await Item.find({ sellerEmail: email });
+  items = items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   try {
     if (items) {

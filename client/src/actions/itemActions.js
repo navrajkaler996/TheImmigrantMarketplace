@@ -7,6 +7,9 @@ import {
   ITEM_LIST_BY_CATEGORY_FAIL,
   ITEM_LIST_BY_CATEGORY_REQUEST,
   ITEM_LIST_BY_CATEGORY_SUCCESS,
+  ITEM_LIST_BY_EMAIL_FAIL,
+  ITEM_LIST_BY_EMAIL_REQUEST,
+  ITEM_LIST_BY_EMAIL_SUCCESS,
   ITEM_LIST_BY_ID_FAIL,
   ITEM_LIST_BY_ID_REQUEST,
   ITEM_LIST_BY_ID_SUCCESS,
@@ -167,7 +170,7 @@ export const itemAdd = (body) => async (dispatch) => {
   }
 };
 
-export const addItemtClear = () => async (dispatch) => {
+export const itemAddClear = () => async (dispatch) => {
   dispatch({
     type: ITEM_ADD_CLEAR,
     payload: {
@@ -175,4 +178,42 @@ export const addItemtClear = () => async (dispatch) => {
       data: {},
     },
   });
+};
+
+export const itemListByEmail = (email) => async (dispatch) => {
+  try {
+    dispatch({
+      type: ITEM_LIST_BY_EMAIL_REQUEST,
+      payload: {
+        loading: true,
+      },
+    });
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    const { data } = await axios(
+      `http://localhost:4000/api/item/getItemsByEmail/${email}`,
+      config
+    );
+
+    dispatch({
+      type: ITEM_LIST_BY_EMAIL_SUCCESS,
+      payload: {
+        loading: false,
+        itemListEmail: data?.items,
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: ITEM_LIST_BY_EMAIL_FAIL,
+      payload: {
+        loading: false,
+        error: error,
+      },
+    });
+  }
 };
