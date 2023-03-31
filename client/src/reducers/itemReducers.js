@@ -7,6 +7,9 @@ import {
   ITEM_LIST_BY_CATEGORY_FAIL,
   ITEM_LIST_BY_CATEGORY_REQUEST,
   ITEM_LIST_BY_CATEGORY_SUCCESS,
+  ITEM_LIST_BY_EMAIL_FAIL,
+  ITEM_LIST_BY_EMAIL_REQUEST,
+  ITEM_LIST_BY_EMAIL_SUCCESS,
   ITEM_LIST_BY_ID_FAIL,
   ITEM_LIST_BY_ID_REQUEST,
   ITEM_LIST_BY_ID_SUCCESS,
@@ -121,6 +124,30 @@ export const itemListReducer = (state = initialState, action) => {
         itemAdded: action?.payload?.data,
       };
     }
+
+    case ITEM_LIST_BY_EMAIL_REQUEST: {
+      return {
+        ...state,
+        loading: action?.payload?.loading,
+      };
+    }
+
+    case ITEM_LIST_BY_EMAIL_SUCCESS: {
+      return {
+        ...state,
+        loading: action?.payload?.loading,
+        itemListEmail: action?.payload?.itemListEmail,
+      };
+    }
+
+    case ITEM_LIST_BY_EMAIL_FAIL: {
+      return {
+        ...state,
+        loading: action?.payload?.loading,
+        error: action?.payload?.error,
+      };
+    }
+
     default:
       return state;
   }

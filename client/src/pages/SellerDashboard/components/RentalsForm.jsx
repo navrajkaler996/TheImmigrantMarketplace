@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemtClear, itemAdd } from "../../../actions/itemActions";
+import { Context } from "..";
+import { itemAdd, itemAddClear } from "../../../actions/itemActions";
 import Spinner from "../../../components/Spinner";
 import { rentalUtilities } from "../../../utils/constants";
 
 const RentalsForm = () => {
   const dispatch = useDispatch();
-  const { login, items } = useSelector((state) => state?.users);
 
-  const { userInfo } = login;
+  const { userInfo, items } = useContext(Context);
 
   const { fullName, email, mobileNumber } = userInfo;
 
@@ -35,7 +35,7 @@ const RentalsForm = () => {
 
   useEffect(() => {
     if (itemAdded?.message?.length > 0) {
-      dispatch(addItemtClear());
+      dispatch(itemAddClear());
     }
   }, []);
 
