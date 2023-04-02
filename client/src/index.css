@@ -424,6 +424,7 @@ big-desk
   opacity: 0;
   width: 0;
   transition: all 0.8s cubic-bezier(0.85, 0, 0.07, 1);
+  visibility: hidden;
 }
 .navigation__list {
   position: absolute;
@@ -450,11 +451,12 @@ big-desk
   margin: 1rem 0;
 }
 .navigation__checkbox:checked ~ .navigation__background {
-  transform: scale(50);
+  transform: scale(60);
 }
 .navigation__checkbox:checked ~ .navigation__nav {
   opacity: 1;
   width: 100%;
+  visibility: visible;
 }
 .navigation__icon {
   position: relative;
@@ -887,6 +889,12 @@ big-desk
   min-height: calc(100vh - 15rem);
   display: flex;
 }
+@media (max-width: 37.5em) {
+  .sellerdashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .sellerdashboard-listings {
   width: 60%;
   height: fit-content;
@@ -894,6 +902,11 @@ big-desk
   border-radius: 3rem 3rem 3rem 3rem;
   padding: 2rem;
   text-align: center;
+}
+@media (max-width: 37.5em) {
+  .sellerdashboard-listings {
+    width: 100%;
+  }
 }
 .sellerdashboard-todo {
   width: 40%;
@@ -903,11 +916,26 @@ big-desk
   padding: 2rem 4rem;
   margin-left: 4rem;
 }
+@media (max-width: 37.5em) {
+  .sellerdashboard-todo {
+    width: 100%;
+    margin-left: 0rem;
+    margin-top: 2rem;
+  }
+}
 .sellerdashboard-todo ul li {
   margin: 0.5rem 0;
 }
 .sellerdashboard-todo__link {
   cursor: pointer;
+}
+.sellerdashboard-message {
+  justify-content: center;
+}
+@media (max-width: 37.5em) {
+  .sellerdashboard-message {
+    justify-content: start;
+  }
 }
 
 .listings-form {
@@ -921,6 +949,11 @@ big-desk
 .listings-form--input-dropdown {
   border: 1px solid #ccc;
 }
+@media (max-width: 37.5em) {
+  .listings-form--input-dropdown {
+    width: 100%;
+  }
+}
 
 .form-container--input-container {
   display: flex;
@@ -931,8 +964,18 @@ big-desk
 .form-container--input-container:first-of-type {
   margin-top: 2rem;
 }
+@media (max-width: 37.5em) {
+  .form-container--input-container {
+    max-width: 100%;
+  }
+}
 .form-container-rentals--input {
   width: 90%;
+}
+@media (max-width: 37.5em) {
+  .form-container-rentals--input {
+    width: 100%;
+  }
 }
 .form-container-rentals--textarea {
   height: auto;

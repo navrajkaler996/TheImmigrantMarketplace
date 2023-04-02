@@ -46,6 +46,8 @@
     width: 0;
 
     transition: all 0.8s cubic-bezier(0.85, 0, 0.07, 1);
+
+    visibility: hidden;
   }
 
   &__list {
@@ -79,13 +81,18 @@
 
   /////FUNCTIONALITY
   &__checkbox:checked ~ &__background {
-    transform: scale(50);
+    transform: scale(60);
   }
 
   &__checkbox:checked ~ &__nav {
     opacity: 1;
     width: 100%;
+    visibility: visible;
   }
+
+  // &__checkbox:checked {
+  //   @include respond-to-hamburger;
+  // }
 
   &__icon {
     position: relative;
