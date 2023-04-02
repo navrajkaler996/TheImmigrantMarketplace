@@ -71,6 +71,28 @@ const MainHeader = () => {
                       <hr className="divider" />
                     </Link>
                   )}
+                  {!userInfo?.type?.buy && userInfo?.type?.sell && (
+                    <p
+                      to="/"
+                      className="main-header__utilities--dropdown-list-item">
+                      {" "}
+                      <li className="main-header__utilities--dropdown-list-item-mode">
+                        Seller account
+                      </li>{" "}
+                      <hr className="divider" />
+                    </p>
+                  )}
+                  {userInfo?.type?.buy && !userInfo?.type?.sell && (
+                    <p
+                      to="/"
+                      className="main-header__utilities--dropdown-list-item">
+                      {" "}
+                      <li className="main-header__utilities--dropdown-list-item-mode">
+                        Buyer account
+                      </li>{" "}
+                      <hr className="divider" />
+                    </p>
+                  )}
                   <Link
                     to="/"
                     className="main-header__utilities--dropdown-list-item">
