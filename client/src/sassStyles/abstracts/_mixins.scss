@@ -40,3 +40,9 @@ big-desk
     }
   }
 }
+
+@mixin respond-to-hamburger() {
+  .sellerdashboard-todo {
+    z-index: 3000 ;
+  }
+}

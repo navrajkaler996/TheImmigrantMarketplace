@@ -33,11 +33,9 @@ const SellerDashboard = () => {
   }
   if (userInfo?.userMode !== "seller") {
     return (
-      <div
-        className="sellerdashboard-container"
-        style={{ justifyContent: "center" }}>
+      <div className="sellerdashboard-container sellerdashboard-message">
         {" "}
-        <p className="secondary-heading">
+        <p className="secondary-heading" style={{ textAlign: "center" }}>
           Please switch to seller mode to access the dashboard
         </p>{" "}
       </div>

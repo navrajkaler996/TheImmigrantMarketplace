@@ -5,6 +5,11 @@
     margin-top: 5rem;
     min-height: calc(100vh - 15rem);
     display: flex;
+
+    @include respond(phone) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &-listings {
@@ -14,6 +19,10 @@
     border-radius: 3rem 3rem 3rem 3rem;
     padding: 2rem;
     text-align: center;
+
+    @include respond(phone) {
+      width: 100%;
+    }
   }
 
   &-todo {
@@ -25,12 +34,26 @@
 
     margin-left: 4rem;
 
+    @include respond(phone) {
+      width: 100%;
+      margin-left: 0rem;
+      margin-top: 2rem;
+    }
+
     & ul li {
       margin: 0.5rem 0;
     }
 
     &__link {
       cursor: pointer;
+    }
+  }
+
+  &-message {
+    justify-content: center;
+
+    @include respond(phone) {
+      justify-content: start;
     }
   }
 }
@@ -48,6 +71,10 @@
 
   &--input-dropdown {
     border: 1px solid #ccc;
+
+    @include respond(phone) {
+      width: 100%;
+    }
   }
 }
 
@@ -61,10 +88,17 @@
       &:first-of-type {
         margin-top: 2rem;
       }
+
+      @include respond(phone) {
+        max-width: 100%;
+      }
     }
     &-rentals {
       &--input {
         width: 90%;
+        @include respond(phone) {
+          width: 100%;
+        }
       }
 
       &--textarea {
