@@ -1,7 +1,7 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ListingsForm from "./components/ListingsForm";
 import YourListings from "./components/YourListings";
 export const Context = createContext();
@@ -10,6 +10,39 @@ const SellerDashboard = () => {
   const [active, setActive] = useState("yourListings");
   const { login, items } = useSelector((state) => state?.users);
   const { userInfo } = login;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // if (Object.keys(login)?.length == 0) {
+    //   return navigate("/home");
+    // }
+  }, []);
+
+  if (Object.keys(login)?.length == 0) {
+    return (
+      <div
+        className="sellerdashboard-container"
+        style={{ justifyContent: "center" }}>
+        {" "}
+        <p className="secondary-heading">
+          Please <Link to="/login"> login </Link>
+        </p>{" "}
+      </div>
+    );
+  }
+  if (userInfo?.userMode !== "seller") {
+    return (
+      <div
+        className="sellerdashboard-container"
+        style={{ justifyContent: "center" }}>
+        {" "}
+        <p className="secondary-heading">
+          Please switch to seller mode to access the dashboard
+        </p>{" "}
+      </div>
+    );
+  }
 
   return (
     <Context.Provider value={{ userInfo, items }}>

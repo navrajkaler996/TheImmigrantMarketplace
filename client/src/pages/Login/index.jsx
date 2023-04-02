@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { login } from "../../actions/userActions";
+import { login, userMode } from "../../actions/userActions";
 import Logo from "../../assets/Logo-1.png";
 import Spinner from "../../components/Spinner";
 import { regex } from "../../utils/regexConstants";
@@ -107,7 +107,13 @@ const Login = () => {
 
   if (userInfo && Object.keys(userInfo)?.length > 0 && userInfo) {
     if (!userInfo?.type?.sell && userInfo?.type?.buy) {
+      dispatch(userMode("buyer"));
       return navigate("/home");
+    }
+
+    if (userInfo?.type?.sell && !userInfo?.type?.buy) {
+      dispatch(userMode("seller"));
+      return navigate("/dashboard");
     }
 
     return (

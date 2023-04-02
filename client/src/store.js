@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import {
   userCreateAccountReducer,
   userLoginReducer,
+  userModeReducer,
 } from "./reducers/userReducers";
 import { combineReducers } from "redux";
 import { itemListReducer } from "./reducers/itemReducers";

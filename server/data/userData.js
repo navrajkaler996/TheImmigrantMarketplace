@@ -22,4 +22,15 @@ export const userData = [
       sell: false,
     },
   },
+  {
+    fullName: "Simran kaler",
+    mobileNumber: 9876543212,
+    email: "simrankaler@gmail.com",
+    password: "Passwords2*",
+    city: "Winnipeg",
+    type: {
+      buy: false,
+      sell: true,
+    },
+  },
 ];

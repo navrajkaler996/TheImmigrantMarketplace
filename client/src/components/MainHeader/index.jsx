@@ -5,7 +5,8 @@ import LoginIcon from "../../assets/Login-icon.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Hamburger from "../Hamburger";
-import { logout } from "../../actions/userActions";
+import { logout, userMode } from "../../actions/userActions";
+import Switch from "react-switch";
 
 const MainHeader = () => {
   const dispatch = useDispatch();
@@ -13,11 +14,18 @@ const MainHeader = () => {
   const { userInfo } = useSelector((state) => state.users?.login);
 
   const [showDropdown, setShowDropdown] = useState(false);
+  const [mode, setMode] = useState(
+    userInfo?.userMode ? userInfo?.userMode : ""
+  );
 
   useEffect(() => {}, [userInfo, location]);
 
   const logoutHandler = () => {
     dispatch(logout());
+  };
+
+  const changeHandler = (value) => {
+    dispatch(userMode(value));
   };
 
   return (
@@ -34,22 +42,49 @@ const MainHeader = () => {
             {showDropdown && (
               <div className="main-header__utilities--dropdown">
                 <ul className="main-header__utilities--dropdown-list">
+                  {userInfo?.type?.buy && userInfo?.type?.sell && (
+                    <Link
+                      to="/"
+                      className="main-header__utilities--dropdown-list-item">
+                      {" "}
+                      <li className="main-header__utilities--dropdown-list-item-mode">
+                        <label>
+                          Buyer
+                          <Switch
+                            onChange={() => changeHandler("buyer")}
+                            checked={userInfo?.userMode === "buyer"}
+                            onColor="#590d22"
+                            width={60}
+                          />
+                        </label>
+
+                        <label>
+                          Seller
+                          <Switch
+                            onChange={() => changeHandler("seller")}
+                            checked={userInfo?.userMode === "seller"}
+                            width={60}
+                            onColor="#590d22"
+                          />
+                        </label>
+                      </li>{" "}
+                      <hr className="divider" />
+                    </Link>
+                  )}
                   <Link
                     to="/"
                     className="main-header__utilities--dropdown-list-item">
                     {" "}
                     <li>Profile</li>{" "}
                   </Link>
-                  <Link
-                    to="/dashboard"
-                    className="main-header__utilities--dropdown-list-item">
-                    <li>Dashboard</li>
-                  </Link>
-                  <Link
-                    to="/"
-                    className="main-header__utilities--dropdown-list-item">
-                    <li>Friends</li>
-                  </Link>
+                  {userInfo?.userMode === "seller" && (
+                    <Link
+                      to="/dashboard"
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>Dashboard</li>
+                    </Link>
+                  )}
+
                   <Link
                     to="/"
                     className="main-header__utilities--dropdown-list-item">
