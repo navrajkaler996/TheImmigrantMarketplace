@@ -8,6 +8,7 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT,
+  USER_MODE,
 } from "../utils/actionConstants";
 
 export const createAccount =
@@ -109,4 +110,17 @@ export const createAccountClear = () => async (dispatch) => {
       data: {},
     },
   });
+};
+
+export const userMode = (mode) => async (dispatch) => {
+  dispatch({
+    type: USER_MODE,
+    payload: {
+      data: mode,
+    },
+  });
+  let temp = JSON.parse(localStorage.getItem("userInfo"));
+  temp.userMode = mode;
+
+  localStorage.setItem("userInfo", JSON.stringify(temp));
 };

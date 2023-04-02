@@ -7,6 +7,7 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT,
+  USER_MODE,
 } from "../utils/actionConstants";
 
 const userInfo =
@@ -80,6 +81,16 @@ export const userLoginReducer = (
 
     case USER_LOGOUT: {
       return {};
+    }
+
+    case USER_MODE: {
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          userMode: action?.payload?.data,
+        },
+      };
     }
 
     default:

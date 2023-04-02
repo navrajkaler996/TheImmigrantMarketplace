@@ -58,7 +58,7 @@
       background-color: #fff;
       z-index: 999;
       margin-top: 2rem;
-      padding: 0.5rem 2rem;
+      padding: 0.5rem 1rem;
       position: relative;
       text-transform: uppercase;
       font-size: 1.5rem;
@@ -75,6 +75,19 @@
       &-list-item {
         text-decoration: none;
         color: black;
+        text-align: center;
+
+        &-mode {
+          font-size: 0.9em;
+
+          & label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 1rem;
+          }
+        }
       }
     }
 

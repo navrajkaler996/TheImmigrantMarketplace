@@ -39,16 +39,14 @@ const SecondaryHeader = () => {
                     {" "}
                     <li>Profile</li>{" "}
                   </Link>
-                  <Link
-                    to="/"
-                    className="main-header__utilities--dropdown-list-item">
-                    <li>Purchases</li>
-                  </Link>
-                  <Link
-                    to="/"
-                    className="main-header__utilities--dropdown-list-item">
-                    <li>Friends</li>
-                  </Link>
+                  {userInfo?.userMode === "seller" && (
+                    <Link
+                      to="/dashboard"
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>Dashboard</li>
+                    </Link>
+                  )}
+
                   <Link
                     to="/"
                     className="main-header__utilities--dropdown-list-item">
