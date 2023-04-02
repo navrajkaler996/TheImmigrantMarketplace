@@ -136,4 +136,23 @@
       top: 0rem;
     }
   }
+
+  &__switch-label {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #fff;
+    font-size: 1.2em;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__account-type {
+    color: #fff;
+    font-size: 1.2em;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
 }

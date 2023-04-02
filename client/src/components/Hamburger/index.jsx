@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Switch from "react-switch";
 
-const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
+const Hamburger = ({
+  loggedIn = false,
+  userInfo,
+  logoutHandler,
+  changeHandler,
+}) => {
   return (
     <div className="navigation">
       <input
@@ -21,6 +27,47 @@ const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
                 Welcome, {userInfo?.fullName}
               </span>
             </li>
+          )}
+          {userInfo?.type?.buy && userInfo?.type?.sell && (
+            <p>
+              {" "}
+              <li className="navigation__item">
+                <label className="navigation__switch-label">
+                  Buyer
+                  <Switch
+                    onChange={() => changeHandler("buyer")}
+                    checked={userInfo?.userMode === "buyer"}
+                    onColor="#590d22"
+                    width={60}
+                  />
+                </label>
+
+                <label className="navigation__switch-label">
+                  Seller
+                  <Switch
+                    onChange={() => changeHandler("seller")}
+                    checked={userInfo?.userMode === "seller"}
+                    width={60}
+                    onColor="#590d22"
+                  />
+                </label>
+              </li>{" "}
+              <hr className="navigation__divider" />
+            </p>
+          )}
+          {!userInfo?.type?.buy && userInfo?.type?.sell && (
+            <p>
+              {" "}
+              <li className="navigation__account-type">Seller account</li>{" "}
+              <hr className="divider" />
+            </p>
+          )}
+          {userInfo?.type?.buy && !userInfo?.type?.sell && (
+            <p>
+              {" "}
+              <li className="navigation__account-type">Buyer account</li>{" "}
+              <hr className="divider" />
+            </p>
           )}
           <li className="navigation__item">
             <Link className="navigation__link" to="/">
@@ -83,11 +130,19 @@ const Hamburger = ({ loggedIn = false, userInfo, logoutHandler }) => {
             </li>
           ) : (
             <li className="navigation__item">
-              <Link
-                to="/profile"
-                className="navigation__link navigation__link2">
-                Profile
-              </Link>
+              {userInfo?.userMode === "seller" ? (
+                <a
+                  href="/dashboard"
+                  className="navigation__link navigation__link2">
+                  Dashboard
+                </a>
+              ) : (
+                <Link
+                  to="/profile"
+                  className="navigation__link navigation__link2">
+                  Profile
+                </Link>
+              )}
 
               <hr className="navigation__divider" />
 

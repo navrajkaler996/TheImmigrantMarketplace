@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Hamburger from "../Hamburger";
 import Logo from "../../assets/Logo-1.png";
 import { Link } from "react-router-dom";
-import { logout } from "../../actions/userActions";
+import { logout, userMode } from "../../actions/userActions";
+import Switch from "react-switch";
 
 const SecondaryHeader = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,10 @@ const SecondaryHeader = () => {
 
   const logoutHandler = () => {
     dispatch(logout());
+  };
+
+  const changeHandler = (value) => {
+    dispatch(userMode(value));
   };
 
   return (
@@ -33,6 +38,53 @@ const SecondaryHeader = () => {
             {showDropdown && (
               <div className="main-header__utilities--dropdown">
                 <ul className="main-header__utilities--dropdown-list">
+                  {userInfo?.type?.buy && userInfo?.type?.sell && (
+                    <Link
+                      to="/"
+                      className="main-header__utilities--dropdown-list-item">
+                      {" "}
+                      <li className="main-header__utilities--dropdown-list-item-mode">
+                        <label>
+                          Buyer
+                          <Switch
+                            onChange={() => changeHandler("buyer")}
+                            checked={userInfo?.userMode === "buyer"}
+                            onColor="#590d22"
+                            width={60}
+                          />
+                        </label>
+
+                        <label>
+                          Seller
+                          <Switch
+                            onChange={() => changeHandler("seller")}
+                            checked={userInfo?.userMode === "seller"}
+                            width={60}
+                            onColor="#590d22"
+                          />
+                        </label>
+                      </li>{" "}
+                      <hr className="divider" />
+                    </Link>
+                  )}
+                  {!userInfo?.type?.buy && userInfo?.type?.sell && (
+                    <p className="main-header__utilities--dropdown-list-item">
+                      {" "}
+                      <li className="main-header__utilities--dropdown-list-item-mode">
+                        Seller account
+                      </li>{" "}
+                      <hr className="divider" />
+                    </p>
+                  )}
+                  {userInfo?.type?.buy && !userInfo?.type?.sell && (
+                    <p className="main-header__utilities--dropdown-list-item">
+                      {" "}
+                      <li className="main-header__utilities--dropdown-list-item-mode">
+                        Buyer account
+                      </li>{" "}
+                      <hr className="divider" />
+                    </p>
+                  )}
                   <Link
                     to="/"
                     className="main-header__utilities--dropdown-list-item">
@@ -74,6 +126,7 @@ const SecondaryHeader = () => {
             loggedIn={userInfo?.token ? true : false}
             userInfo={userInfo}
             logoutHandler={logoutHandler}
+            changeHandler={changeHandler}
           />
         </div>
       </div>

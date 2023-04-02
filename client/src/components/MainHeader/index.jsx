@@ -132,6 +132,7 @@ const MainHeader = () => {
             loggedIn={userInfo?.token ? true : false}
             userInfo={userInfo}
             logoutHandler={logoutHandler}
+            changeHandler={changeHandler}
           />
         </div>
       </div>
