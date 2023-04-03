@@ -1003,9 +1003,6 @@ big-desk
   border: 1px solid #ccc;
   margin: 1rem;
   border-radius: 3rem;
-  background-image: linear-gradient(to right, #590d22, #a4133c, #590d22);
-  color: #fff;
-  transition: all 0.1s ease-in-out;
 }
 .yourlistings-item__image {
   height: 8rem;
@@ -1023,7 +1020,8 @@ big-desk
 }
 .yourlistings-item:hover {
   cursor: pointer;
-  transform: translateY(-5px);
+  background-image: linear-gradient(to right, #590d22, #a4133c, #590d22);
+  color: #fff;
 }
 .yourlistings-viewmore {
   align-self: flex-end;
@@ -1034,6 +1032,99 @@ big-desk
 }
 .yourlistings-viewmore:hover {
   transform: scale(1.1);
+}
+
+.inbox {
+  display: flex;
+  flex-direction: column;
+}
+.inbox__container {
+  display: flex;
+}
+.inbox__list {
+  width: 40%;
+}
+.inbox__list-item {
+  display: flex;
+  align-items: center;
+  height: 6rem;
+  border: 1px solid #ccc;
+  margin: 1rem;
+  border-radius: 3rem;
+  padding-left: 0.5rem;
+}
+.inbox__list-item-image {
+  width: 5rem;
+  height: 5rem;
+  align-items: center;
+  border-radius: 3rem;
+  margin-left: 0.2rem;
+}
+.inbox__list-item-name {
+  margin-left: 1rem;
+}
+.inbox__list-item:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to right, #590d22, #a4133c, #590d22);
+  color: #fff;
+}
+.inbox__chat {
+  display: flex;
+  flex-direction: column;
+  height: 50rem;
+  border: 1px solid #ccc;
+  margin: 1rem 1rem 1rem 4rem;
+  border-radius: 3rem;
+  padding: 1rem;
+  width: 60%;
+}
+.inbox__chatbox {
+  height: 90%;
+  overflow-y: scroll;
+  padding: 1rem 1rem 1rem 0;
+  margin: 1rem 0;
+}
+.inbox__chatbox-item {
+  display: flex;
+  min-height: 5rem;
+  height: auto;
+  padding-left: 0.5rem;
+  margin: 1rem 0;
+}
+.inbox__chatbox-item-image {
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  border-radius: 3rem;
+  margin-left: 0.2rem;
+}
+.inbox__chatbox-item-container {
+  width: 100%;
+  word-wrap: break-word;
+}
+.inbox__chatbox-item-container-user {
+  display: flex;
+  justify-content: end;
+}
+.inbox__chatbox-item-text {
+  border: 1px solid #ccc;
+  border-radius: 3rem;
+  min-height: 4rem;
+  margin-left: 1rem;
+  font-size: 0.9em;
+  padding: 0.3rem 1.5rem;
+  text-align: left;
+  width: calc(100% - 15rem);
+}
+.inbox__input-container {
+  display: flex;
+}
+.inbox__button {
+  margin-top: 0;
+  width: 6rem;
+  padding: 0;
+  font-size: 0.7em;
+  margin-left: 0.8rem;
 }
 
 *,
