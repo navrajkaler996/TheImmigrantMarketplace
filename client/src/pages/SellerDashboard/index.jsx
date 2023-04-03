@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Inbox from "./components/Inbox";
 import ListingsForm from "./components/ListingsForm";
 import YourListings from "./components/YourListings";
 export const Context = createContext();
@@ -49,6 +50,8 @@ const SellerDashboard = () => {
           {active === "yourListings" && <YourListings />}
 
           {active === "addToListing" && <ListingsForm />}
+
+          {active === "inbox" && <Inbox />}
         </div>
 
         <div className="sellerdashboard-todo">
@@ -65,7 +68,12 @@ const SellerDashboard = () => {
               onClick={() => setActive("addToListing")}>
               Add a new listing
             </li>
-            <li>Check inbox</li>
+            <li
+              className="sellerdashboard-todo__link"
+              id="addToListing"
+              onClick={() => setActive("inbox")}>
+              Check inbox
+            </li>
             <li>Friend list</li>
             <li>Edit your profile</li>
           </ul>
