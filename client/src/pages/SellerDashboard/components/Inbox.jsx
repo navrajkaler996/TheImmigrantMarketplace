@@ -77,46 +77,12 @@ const Inbox = () => {
             <div className="inbox__chatbox-item">
               <img src={SalmanKhan} className="inbox__chatbox-item-image" />
               <div className="inbox__chatbox-item-container">
-                <p className="inbox__chatbox-item-text">Pavit</p>
+                <p className="inbox__chatbox-item-text">Hi</p>
               </div>
             </div>
             <div className="inbox__chatbox-item i">
               <div className="inbox__chatbox-item-container inbox__chatbox-item-container-user">
-                <p className="inbox__chatbox-item-text">
-                  Pavit
-                  siasdasasddasasdasadsasdasdasdsadfsaggshahsshhshshshhshshshhshshshshshhsngh
-                  sadaadasda
-                </p>
-              </div>
-            </div>
-            <div className="inbox__chatbox-item">
-              <img src={SalmanKhan} className="inbox__chatbox-item-image" />
-              <div className="inbox__chatbox-item-container">
-                <p className="inbox__chatbox-item-text">Pavit</p>
-              </div>
-            </div>
-            <div className="inbox__chatbox-item i">
-              <div className="inbox__chatbox-item-container inbox__chatbox-item-container-user">
-                <p className="inbox__chatbox-item-text">
-                  Pavit
-                  siasdasasddasasdasadsasdasdasdsadfsaggshahsshhshshshhshshshhshshshshshhsngh
-                  sadaadasda
-                </p>
-              </div>
-            </div>
-            <div className="inbox__chatbox-item">
-              <img src={SalmanKhan} className="inbox__chatbox-item-image" />
-              <div className="inbox__chatbox-item-container">
-                <p className="inbox__chatbox-item-text">Pavit</p>
-              </div>
-            </div>
-            <div className="inbox__chatbox-item i">
-              <div className="inbox__chatbox-item-container inbox__chatbox-item-container-user">
-                <p className="inbox__chatbox-item-text">
-                  Pavit
-                  siasdasasddasasdasadsasdasdasdsadfsaggshahsshhshshshhshshshhshshshshshhsngh
-                  sadaadasda
-                </p>
+                <p className="inbox__chatbox-item-text">Hi there</p>
               </div>
             </div>
           </div>
