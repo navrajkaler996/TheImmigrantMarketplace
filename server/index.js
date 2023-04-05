@@ -4,6 +4,8 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import userRouter from "./routes/userRoutes.js";
 import itemRouter from "./routes/itemRoutes.js";
+import chatRouter from "./routes/chatRoutes.js";
+import messageRouter from "./routes/messageRoutes.js";
 
 dotenv.config();
 
@@ -16,6 +18,8 @@ app.use(express.json({ extended: false }));
 
 app.use("/api/user", userRouter);
 app.use("/api/item", itemRouter);
+app.use("/api/chat", chatRouter);
+app.use("/api/message", messageRouter);
 
 const PORT = process.env.PORT;
 

@@ -6,6 +6,7 @@ import { itemData } from "./data/itemData.js";
 import User from "./models/userModel.js";
 import Item from "./models/itemModel.js";
 import connectDB from "./config/db.js";
+import Chat from "./models/chatModel.js";
 
 connectDB();
 
@@ -29,6 +30,7 @@ const deleteData = async () => {
   try {
     await User.deleteMany();
     await Item.deleteMany();
+    await Chat.deleteMany();
 
     console.log("Data destroyed!");
     process.exit();
