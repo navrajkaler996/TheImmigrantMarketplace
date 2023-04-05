@@ -1,66 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { chatCurrent } from "../../../actions/chatActions";
+
 import SalmanKhan from "../../../assets/salman-khan-2.jpeg";
+import Chatbox from "./Chatbox";
 
 const Inbox = () => {
-  const [clicked, setClicked] = useState();
-  const messages = [
-    {
-      user: "Pavit",
-      message: "Hi",
-      host: true,
-    },
-    {
-      user: "Avneet",
-      message: "Hi",
-    },
-    {
-      user: "Pavit",
-      message: "Hi",
-      host: true,
-    },
-    {
-      user: "Avneet",
-      message: "Hi",
-    },
-    {
-      user: "Pavit",
-      message: "Hi",
-      host: true,
-    },
-    {
-      user: "Pavit",
-      message: "Hi",
-      host: true,
-    },
-    {
-      user: "Avneet",
-      message: "Hi",
-    },
-    {
-      user: "Pavit",
-      message: "Hi",
-      host: true,
-    },
-    {
-      user: "Avneet",
-      message: "Hi",
-    },
-    {
-      user: "Pavit",
-      message: "Hi",
-      host: true,
-    },
-    {
-      user: "Pavit",
-      message: "Hi",
-      host: true,
-    },
-    {
-      user: "Avneet",
-      message: "Hi",
-    },
-  ];
+  const dispatch = useDispatch();
+
+  const { login, chat } = useSelector((state) => state?.users);
+
+  const { userInfo } = login;
+
+  const { _id } = userInfo;
+
+  useEffect(() => {
+    dispatch(chatCurrent(_id));
+  }, [_id]);
+
   return (
     <div className="inbox">
       <p className="secondary-heading"> Your messages</p>
@@ -73,33 +31,9 @@ const Inbox = () => {
           </div>
         </div>
         <div className="inbox__chat">
-          <div className="inbox__chatbox">
-            <div className="inbox__chatbox-item">
-              <img src={SalmanKhan} className="inbox__chatbox-item-image" />
-              <div className="inbox__chatbox-item-container">
-                <p className="inbox__chatbox-item-text">Hi</p>
-              </div>
-            </div>
-            <div className="inbox__chatbox-item i">
-              <div className="inbox__chatbox-item-container inbox__chatbox-item-container-user">
-                <p className="inbox__chatbox-item-text">Hi there</p>
-              </div>
-            </div>
-          </div>
-          {/* <div className="inbox__chatbox">
-            
-          </div> */}
-          <div className="inbox__input-container">
-            <input
-              type="text"
-              className="create-account__form--input listings-form--input-dropdown form-container-rentals--input"
-              placeholder="Type..."
-              name="message"
-            />
-            <button className="inbox__button create-account__form--input create-account__form--input-submit button-success">
-              Send
-            </button>
-          </div>
+          {chat?.currentChat?.length > 0 && (
+            <Chatbox chatId={chat?.currentChat[0]?._id} />
+          )}
         </div>
       </div>
     </div>

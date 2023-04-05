@@ -6,4 +6,7 @@ export const errorMessages = {
   TOKEN_INVALID: "Invalid token!",
   TOKEN_NOT_FOUND: "No token found!",
   FETCHING_DATA: "Error while fetching requested data!",
+  POSTING_DATA: "Error while posting data",
+  NO_CHAT_FOUND: "No chat found",
+  INVALID_DATA: "Invalid data",
 };
