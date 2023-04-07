@@ -22,7 +22,7 @@ export const messageReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action?.payload?.loading,
-        messages: action?.payload?.messages,
+        totalMessages: action?.payload?.totalMessages,
       };
     }
 

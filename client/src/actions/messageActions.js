@@ -27,7 +27,7 @@ export const messageList = (id) => async (dispatch) => {
       type: MESSAGE_LIST_SUCCESS,
       payload: {
         loading: false,
-        messages: data,
+        totalMessages: data,
       },
     });
   } catch (error) {

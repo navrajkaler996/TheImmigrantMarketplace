@@ -19,7 +19,7 @@ export const chatReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action?.payload?.loading,
-        currentChat: action?.payload?.currentChat,
+        chatData: action?.payload?.chatData,
       };
     }
 

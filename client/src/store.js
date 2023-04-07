@@ -14,8 +14,8 @@ const users = combineReducers({
   createAccount: userCreateAccountReducer,
   login: userLoginReducer,
   items: itemListReducer,
-  message: messageReducer,
-  chat: chatReducer,
+  messages: messageReducer,
+  chats: chatReducer,
 });
 
 const store = configureStore({

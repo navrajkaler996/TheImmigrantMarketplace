@@ -1,15 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Context } from "..";
+
 import { itemAdd, itemAddClear } from "../../../actions/itemActions";
 import Spinner from "../../../components/Spinner";
 import { rentalUtilities } from "../../../utils/constants";
+import SellerDashboardContext from "../SellerDashboardContext";
 
 const RentalsForm = () => {
   const dispatch = useDispatch();
 
-  const { userInfo, items } = useContext(Context);
+  const { userInfo, items } = useContext(SellerDashboardContext);
 
   const { fullName, email, mobileNumber } = userInfo;
 
