@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { io } from "socket.io-client";
 
@@ -11,7 +11,10 @@ import YourListings from "./components/YourListings";
 import SellerDashboardContext from "./SellerDashboardContext";
 
 const SellerDashboard = () => {
+  const { state } = useLocation();
+
   const { login, items } = useSelector((state) => state?.users);
+
   const { userInfo } = login;
 
   const [active, setActive] = useState("yourListings");
@@ -21,6 +24,8 @@ const SellerDashboard = () => {
   //Connecting socket
   useEffect(() => {
     socket.current = io("ws://localhost:8800");
+
+    if (state?.active) setActive(state?.active);
   }, []);
 
   if (Object.keys(login)?.length == 0) {
@@ -35,16 +40,56 @@ const SellerDashboard = () => {
       </div>
     );
   }
-  // if (userInfo?.userMode !== "seller") {
-  //   return (
-  //     <div className="sellerdashboard-container sellerdashboard-message">
-  //       {" "}
-  //       <p className="secondary-heading" style={{ textAlign: "center" }}>
-  //         Please switch to seller mode to access the dashboard
-  //       </p>{" "}
-  //     </div>
-  //   );
-  // }
+
+  const sellerToDo = (
+    <>
+      <li
+        className="sellerdashboard-todo__link"
+        id="yourListings"
+        onClick={() => setActive("yourListings")}>
+        Your listings
+      </li>
+      <li
+        className="sellerdashboard-todo__link"
+        id="addToListing"
+        onClick={() => setActive("addToListing")}>
+        Add a new listing
+      </li>
+      <li
+        className="sellerdashboard-todo__link"
+        id="addToListing"
+        onClick={() => setActive("inbox")}>
+        Check inbox
+      </li>
+      <li>Friend list</li>
+      <li>Edit your profile</li>
+    </>
+  );
+
+  const buyerToDo = (
+    <>
+      <li
+        className="sellerdashboard-todo__link"
+        id="yourListings"
+        onClick={() => setActive("yourBuys")}>
+        Your buys
+      </li>
+      <li
+        className="sellerdashboard-todo__link"
+        id="addToListing"
+        onClick={() => setActive("cart")}>
+        Cart
+      </li>
+      <li
+        className="sellerdashboard-todo__link"
+        id="addToListing"
+        onClick={() => setActive("inbox")}>
+        Check inbox
+      </li>
+      <li>Friend list</li>
+      <li>Edit your profile</li>
+    </>
+  );
 
   return (
     <SellerDashboardContext.Provider value={{ userInfo, items, socket }}>
@@ -59,26 +104,8 @@ const SellerDashboard = () => {
 
         <div className="sellerdashboard-todo">
           <ul>
-            <li
-              className="sellerdashboard-todo__link"
-              id="yourListings"
-              onClick={() => setActive("yourListings")}>
-              Your listings
-            </li>
-            <li
-              className="sellerdashboard-todo__link"
-              id="addToListing"
-              onClick={() => setActive("addToListing")}>
-              Add a new listing
-            </li>
-            <li
-              className="sellerdashboard-todo__link"
-              id="addToListing"
-              onClick={() => setActive("inbox")}>
-              Check inbox
-            </li>
-            <li>Friend list</li>
-            <li>Edit your profile</li>
+            {userInfo?.userMode === "seller" && { ...sellerToDo }}
+            {userInfo?.userMode === "buyer" && { ...buyerToDo }}
           </ul>
         </div>
       </div>

@@ -17,7 +17,7 @@ const Conversation = ({
   };
   return (
     <div
-      className="inbox__list-item"
+      className="conversation"
       key={user._id}
       onClick={(e) => handleChat(user._id)}
       style={
@@ -29,8 +29,8 @@ const Conversation = ({
             }
           : {}
       }>
-      <img src={SalmanKhan} className="inbox__list-item-image" />
-      <p className="inbox__list-item-name">{user.fullName}</p>
+      <img src={SalmanKhan} className="conversation__image" />
+      <p className="conversation__name">{user.fullName}</p>
     </div>
   );
 };

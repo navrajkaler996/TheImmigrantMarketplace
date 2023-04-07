@@ -85,12 +85,45 @@ const SecondaryHeader = () => {
                       <hr className="divider" />
                     </p>
                   )}
-                  <Link
-                    to="/"
-                    className="main-header__utilities--dropdown-list-item">
-                    {" "}
-                    <li>Profile</li>{" "}
-                  </Link>
+
+                  {userInfo?.userMode === "buyer" && (
+                    <Link
+                      to="/account"
+                      state={{
+                        active: "inbox",
+                      }}
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>inbox</li>
+                    </Link>
+                  )}
+
+                  {userInfo?.userMode === "buyer" && (
+                    <Link
+                      to="/account"
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>Account</li>
+                    </Link>
+                  )}
+
+                  {userInfo?.userMode === "buyer" && (
+                    <Link
+                      to="/"
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>Cart</li>
+                    </Link>
+                  )}
+
+                  {userInfo?.userMode === "seller" && (
+                    <Link
+                      to="/dashboard"
+                      state={{
+                        active: "inbox",
+                      }}
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>inbox</li>
+                    </Link>
+                  )}
+
                   {userInfo?.userMode === "seller" && (
                     <Link
                       to="/dashboard"
@@ -99,11 +132,6 @@ const SecondaryHeader = () => {
                     </Link>
                   )}
 
-                  <Link
-                    to="/"
-                    className="main-header__utilities--dropdown-list-item">
-                    <li>Cart</li>
-                  </Link>
                   <Link
                     to="/"
                     className="main-header__utilities--dropdown-list-item">
