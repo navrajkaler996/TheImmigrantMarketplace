@@ -1081,7 +1081,7 @@ big-desk
 .inbox__chatbox {
   height: 90%;
   overflow-y: scroll;
-  padding: 0 1rem 1rem 0;
+  padding: 0 1rem 0 0;
   margin: 1rem 0;
 }
 .inbox__chatbox-item {

@@ -32,16 +32,16 @@ const SellerDashboard = () => {
       </div>
     );
   }
-  if (userInfo?.userMode !== "seller") {
-    return (
-      <div className="sellerdashboard-container sellerdashboard-message">
-        {" "}
-        <p className="secondary-heading" style={{ textAlign: "center" }}>
-          Please switch to seller mode to access the dashboard
-        </p>{" "}
-      </div>
-    );
-  }
+  // if (userInfo?.userMode !== "seller") {
+  //   return (
+  //     <div className="sellerdashboard-container sellerdashboard-message">
+  //       {" "}
+  //       <p className="secondary-heading" style={{ textAlign: "center" }}>
+  //         Please switch to seller mode to access the dashboard
+  //       </p>{" "}
+  //     </div>
+  //   );
+  // }
 
   return (
     <Context.Provider value={{ userInfo, items }}>
