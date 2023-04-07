@@ -240,10 +240,46 @@
   }
 }
 
+/////CONVERSATIONS
+
+.conversation {
+  display: flex;
+  align-items: center;
+  height: 6rem;
+  border: 1px solid #ccc;
+  margin: 1rem;
+  border-radius: 3rem;
+  padding-left: 0.5rem;
+
+  &__image {
+    width: 5rem;
+    height: 5rem;
+    align-items: center;
+    border-radius: 3rem;
+    margin-left: 0.2rem;
+  }
+
+  &__name {
+    margin-left: 1rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-image: linear-gradient(
+      to right,
+      $primary-color-1,
+      $primary-color-2,
+      $primary-color-1
+    );
+    color: #fff;
+  }
+}
+
 /////CHATBOX
 .chatbox {
   height: 90%;
   overflow-y: scroll;
+  overflow-x: hidden;
   padding: 0 1rem 0 0;
   margin: 1rem 0;
 

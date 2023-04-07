@@ -56,6 +56,11 @@ const Inbox = () => {
             )}
         </div>
         <div className="inbox__chat">
+          {!selectedChat && (
+            <p className="secondary-heading" style={{ marginTop: "50%" }}>
+              Select a conversation
+            </p>
+          )}
           {selectedChatId && (
             <Chatbox chatId={selectedChatId} chats={chats} socket={socket} />
           )}

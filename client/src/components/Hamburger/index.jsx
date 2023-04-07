@@ -138,9 +138,9 @@ const Hamburger = ({
                 </a>
               ) : (
                 <Link
-                  to="/profile"
+                  to="/account"
                   className="navigation__link navigation__link2">
-                  Profile
+                  Account
                 </Link>
               )}
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../assets/Logo-1.png";
 import SearchIcon from "../../assets/Search-icon.png";
 import LoginIcon from "../../assets/Login-icon.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Hamburger from "../Hamburger";
 import { logout, userMode } from "../../actions/userActions";
@@ -93,12 +93,44 @@ const MainHeader = () => {
                       <hr className="divider" />
                     </p>
                   )}
-                  <Link
-                    to="/"
-                    className="main-header__utilities--dropdown-list-item">
-                    {" "}
-                    <li>Profile</li>{" "}
-                  </Link>
+                  {userInfo?.userMode === "buyer" && (
+                    <Link
+                      to="/account"
+                      state={{
+                        active: "inbox",
+                      }}
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>inbox</li>
+                    </Link>
+                  )}
+
+                  {userInfo?.userMode === "buyer" && (
+                    <Link
+                      to="/account"
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>Account</li>
+                    </Link>
+                  )}
+
+                  {userInfo?.userMode === "buyer" && (
+                    <Link
+                      to="/"
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>Cart</li>
+                    </Link>
+                  )}
+
+                  {userInfo?.userMode === "seller" && (
+                    <Link
+                      to="/dashboard"
+                      state={{
+                        active: "inbox",
+                      }}
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>inbox</li>
+                    </Link>
+                  )}
+
                   {userInfo?.userMode === "seller" && (
                     <Link
                       to="/dashboard"
@@ -106,12 +138,6 @@ const MainHeader = () => {
                       <li>Dashboard</li>
                     </Link>
                   )}
-
-                  <Link
-                    to="/"
-                    className="main-header__utilities--dropdown-list-item">
-                    <li>Cart</li>
-                  </Link>
                   <Link
                     to="/"
                     className="main-header__utilities--dropdown-list-item">
