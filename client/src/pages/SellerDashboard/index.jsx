@@ -1,23 +1,26 @@
-import React, { createContext, useContext, useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import { io } from "socket.io-client";
+
 import Inbox from "./components/Inbox";
 import ListingsForm from "./components/ListingsForm";
 import YourListings from "./components/YourListings";
-export const Context = createContext();
+
+import SellerDashboardContext from "./SellerDashboardContext";
 
 const SellerDashboard = () => {
-  const [active, setActive] = useState("yourListings");
   const { login, items } = useSelector((state) => state?.users);
   const { userInfo } = login;
 
-  const navigate = useNavigate();
+  const [active, setActive] = useState("yourListings");
 
+  const socket = useRef();
+
+  //Connecting socket
   useEffect(() => {
-    // if (Object.keys(login)?.length == 0) {
-    //   return navigate("/home");
-    // }
+    socket.current = io("ws://localhost:8800");
   }, []);
 
   if (Object.keys(login)?.length == 0) {
@@ -44,7 +47,7 @@ const SellerDashboard = () => {
   // }
 
   return (
-    <Context.Provider value={{ userInfo, items }}>
+    <SellerDashboardContext.Provider value={{ userInfo, items, socket }}>
       <div className="sellerdashboard-container">
         <div className="sellerdashboard-listings">
           {active === "yourListings" && <YourListings />}
@@ -79,7 +82,7 @@ const SellerDashboard = () => {
           </ul>
         </div>
       </div>
-    </Context.Provider>
+    </SellerDashboardContext.Provider>
   );
 };
 

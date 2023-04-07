@@ -1,6 +1,8 @@
+import c from "config";
 import asyncHandler from "express-async-handler";
 import { errorMessages } from "../constants.js";
 import Chat from "../models/chatModel.js";
+import User from "../models/userModel.js";
 
 /////CREATE a new chat
 //POST @ /api/chat/createNewChat
@@ -9,12 +11,9 @@ export const createNewChat = asyncHandler(async (req, res) => {
     const { senderId, recieverId } = req.body;
 
     if (senderId && recieverId) {
-      // const chatExists = await Chat.find({
-      //   members:
-      // })
-
       const newChat = await Chat.create({
         members: [senderId, recieverId],
+        names: {},
       });
 
       if (newChat) {
@@ -42,12 +41,28 @@ export const getChat = asyncHandler(async (req, res) => {
   try {
     const id = req.params.id;
     if (id) {
-      const chat = await Chat.find({
+      let chat = await Chat.find({
         members: { $in: [id] },
       });
 
       if (chat?.length > 0) {
-        res.status(201).json(chat);
+        let members = chat.map((c) => c.members);
+        members = [...new Set(members.flat())];
+
+        const users = await User.find(
+          {
+            _id: { $in: [...members] },
+          },
+          { fullName: 1 }
+        );
+
+        if (users?.length > 0) {
+          let chatWithNames = {
+            conversations: chat,
+            users,
+          };
+          res.status(201).json(chatWithNames);
+        }
       } else {
         res.status(201).json({
           message: errorMessages.NO_CHAT_FOUND,

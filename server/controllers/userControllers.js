@@ -77,6 +77,22 @@ export const login = asyncHandler(async (req, res) => {
   }
 });
 
+export const getUserNames = asyncHandler(async (req, res) => {
+  const { ids } = req.body;
+
+  const user = await User.findMany({
+    
+  });
+
+  if (user) {
+    res.status(200).json({ name: user.fullName });
+  } else {
+    res.status(400).json({
+      message: errorMessages.USER_NOT_FOUND,
+    });
+  }
+});
+
 export const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 

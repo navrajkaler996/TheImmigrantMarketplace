@@ -10,6 +10,7 @@ const router = express.Router();
 
 router.post("/createaccount", createAccount);
 router.post("/login", login);
+router.get("/")
 router.route("/profile").get(protect, getUserProfile);
 
 export default router;

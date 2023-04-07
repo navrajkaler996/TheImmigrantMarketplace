@@ -24,7 +24,7 @@ export const chatCurrent = (id) => async (dispatch) => {
       type: CHAT_CURRENT_SUCCESS,
       payload: {
         loading: false,
-        currentChat: data,
+        chatData: data,
       },
     });
   } catch (error) {

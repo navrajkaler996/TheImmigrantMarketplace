@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Context } from "..";
 import { itemListByEmail } from "../../../actions/itemActions";
 import { reverseDate } from "../../../utils/helper";
+import SellerDashboardContext from "../SellerDashboardContext";
 
 const YourListings = () => {
   const dispatch = useDispatch();
 
-  const { userInfo, items } = useContext(Context);
+  const { userInfo, items } = useContext(SellerDashboardContext);
 
   const { email } = userInfo;
 

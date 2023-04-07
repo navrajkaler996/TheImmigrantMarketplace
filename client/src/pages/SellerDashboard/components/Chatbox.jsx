@@ -1,59 +1,55 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { messageAdd, messageList } from "../../../actions/messageActions";
-import SalmanKhan from "../../../assets/salman-khan-2.jpeg";
-import { io } from "socket.io-client";
-import { useRef } from "react";
 
-const Chatbox = ({ chatId, chat, socket }) => {
+import { messageAdd, messageList } from "../../../actions/messageActions";
+
+import Spinner from "../../../components/Spinner";
+
+import SalmanKhan from "../../../assets/salman-khan-2.jpeg";
+
+import { getRecieverId } from "../helper";
+
+const Chatbox = ({ chatId, chats, socket }) => {
   const dispatch = useDispatch();
-  const { message, login } = useSelector((state) => state?.users);
+
+  const { messages, login } = useSelector((state) => state?.users);
   const { userInfo } = login;
-  const { messages, messageAdded } = message;
+  const { totalMessages, messageAdded, loading } = messages;
 
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMesssage] = useState("");
-  const bottom = useRef(null);
-  useEffect(() => {
-    dispatch(messageList(chatId));
-    console.log("3333");
-  }, [chatId, messageAdded, arrivalMessage]);
 
+  const bottom = useRef(null);
+
+  //Receiving message
   useEffect(() => {
     socket.current.on("getMessage", (data) => {
       setArrivalMesssage({ chatId, senderId: data.senderId, text: data.text });
-      // dispatch(messageList(chatId));
     });
   }, []);
 
+  //Automatic scroll to the bottom
   useEffect(() => {
     bottom.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [totalMessages]);
 
-  // useEffect(() => {
-  //   dispatch(messageAdd(chatId, arrivalMessage.senderId, arrivalMessage.text));
-  // }, [arrivalMessage]);
+  useEffect(() => {
+    dispatch(messageList(chatId));
+  }, [chatId, messageAdded, arrivalMessage]);
 
   const changeHandler = (e) => {
     setNewMessage(e.target.value);
   };
 
-  const getRecieverId = (id) => {
-    const currentChat = chat?.currentChat?.find((c) => c._id === chatId);
-
-    const recieverId = currentChat?.members?.find((i) => i !== id);
-
-    return recieverId;
-  };
-
-  const sendMessageHandler = () => {
+  const sendMessageHandler = (e) => {
+    e.preventDefault();
     if (newMessage?.length > 0) {
       dispatch(messageAdd(chatId, userInfo._id, newMessage));
+      //Extracting recieverId
+      const recieverId = getRecieverId(chats, chatId, userInfo._id);
 
-      const recieverId = getRecieverId(userInfo._id);
-
+      //Using recieverId to send the message
       if (recieverId) {
         socket.current.emit("sendMessage", {
           senderId: userInfo._id,
@@ -67,23 +63,36 @@ const Chatbox = ({ chatId, chat, socket }) => {
 
   return (
     <>
-      <div className="inbox__chatbox">
-        {messages?.length > 0 &&
-          messages?.map((m) => {
+      <div className="chatbox">
+        {loading && !totalMessages && (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "20rem",
+            }}>
+            {" "}
+            <Spinner color="#590d22" />{" "}
+          </div>
+        )}
+
+        {totalMessages?.length > 0 &&
+          totalMessages?.map((m) => {
             if (m.sender === userInfo._id) {
               return (
-                <div className="inbox__chatbox-item i">
-                  <div className="inbox__chatbox-item-container inbox__chatbox-item-container-user">
-                    <p className="inbox__chatbox-item-text">{m.text}</p>
+                <div className="chatbox__item">
+                  <div className="chatbox__item-container chatbox__item-container-host">
+                    <p className="chatbox__item-text">{m.text}</p>
                   </div>
                 </div>
               );
             } else {
               return (
-                <div className="inbox__chatbox-item">
-                  <img src={SalmanKhan} className="inbox__chatbox-item-image" />
-                  <div className="inbox__chatbox-item-container">
-                    <p className="inbox__chatbox-item-text">{m.text}</p>
+                <div className="chatbox__item">
+                  <img src={SalmanKhan} className="chatbox__item-image" />
+                  <div className="chatbox__item-container">
+                    <p className="chatbox__item-text">{m.text}</p>
                   </div>
                 </div>
               );
@@ -92,7 +101,7 @@ const Chatbox = ({ chatId, chat, socket }) => {
         <div ref={bottom}></div>
       </div>
 
-      <div className="inbox__input-container">
+      <form className="chatbox__input-container" onSubmit={sendMessageHandler}>
         <input
           type="text"
           className="create-account__form--input listings-form--input-dropdown form-container-rentals--input"
@@ -102,20 +111,13 @@ const Chatbox = ({ chatId, chat, socket }) => {
           onChange={(e) => changeHandler(e)}
         />
         <button
-          className="inbox__button create-account__form--input create-account__form--input-submit button-success"
-          onClick={sendMessageHandler}>
+          type="submit"
+          className="chatbox__button create-account__form--input create-account__form--input-submit button-success">
           Send
         </button>
-      </div>
+      </form>
     </>
   );
 };
 
 export default Chatbox;
-
-// <div className="message">
-//   <img src={SalmanKhan} className="message__image" />
-//   <div className="message__container">
-//     <p className="message__text">Hi</p>
-//   </div>
-// </div>
