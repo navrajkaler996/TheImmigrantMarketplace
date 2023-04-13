@@ -19,7 +19,7 @@ export const messageList = (id) => async (dispatch) => {
     };
 
     const { data } = await axios.get(
-      `http://localhost:4000/api/message/getMessages/${id}`,
+      `${getBaseURL()}/api/message/getMessages/${id}`,
       config
     );
 
@@ -58,7 +58,7 @@ export const messageAdd = (chatId, sender, text) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `http://localhost:4000/api/message/addMessage`,
+      `${getBaseURL()}/api/message/addMessage`,
       body,
       config
     );

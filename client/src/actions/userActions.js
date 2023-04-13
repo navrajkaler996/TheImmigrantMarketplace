@@ -27,7 +27,7 @@ export const createAccount =
       const body = { fullName, mobileNumber, email, password, city, type };
 
       const { data } = await axios.post(
-        "http://localhost:4000/api/user/createaccount",
+        `${getBaseURL()}/api/user/createaccount`,
         body,
         config
       );
@@ -61,7 +61,7 @@ export const login = (email, password) => async (dispatch) => {
     const body = { email, password };
 
     const { data } = await axios.post(
-      "http://localhost:4000/api/user/login",
+      `${getBaseURL()}/api/user/login`,
       body,
       config
     );
