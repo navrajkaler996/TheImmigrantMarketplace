@@ -20,8 +20,6 @@ import {
 } from "../utils/actionConstants";
 import { getBaseURL } from "../utils/apiURL";
 
-console.log("+++++", getBaseURL());
-
 export const itemList =
   (count = -1) =>
   async (dispatch) => {
@@ -38,6 +36,7 @@ export const itemList =
         count,
       };
 
+      console.log("+++++", getBaseURL());
       const { data } = await axios(
         `${getBaseURL()}/api/item/getItems`,
         body,
