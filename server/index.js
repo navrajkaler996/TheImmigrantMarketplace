@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -20,6 +21,16 @@ app.use("/api/user", userRouter);
 app.use("/api/item", itemRouter);
 app.use("/api/chat", chatRouter);
 app.use("/api/message", messageRouter);
+
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === "PRODUCTION") {
+  app.use(express.static(path.join(__dirname, "/client/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "main.js"))
+  );
+}
 
 const PORT = process.env.PORT;
 const ENV = process.env.NODE_ENV;

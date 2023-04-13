@@ -18,6 +18,9 @@ import {
   ITEM_LIST_SUCCESS,
   USER_CREATE_ACCOUNT_CLEAR,
 } from "../utils/actionConstants";
+import { getBaseURL } from "../utils/apiURL";
+
+console.log("+++++", getBaseURL());
 
 export const itemList =
   (count = -1) =>
@@ -36,7 +39,7 @@ export const itemList =
       };
 
       const { data } = await axios(
-        "http://localhost:4000/api/item/getItems",
+        `${getBaseURL()}/api/item/getItems`,
         body,
         config
       );
@@ -73,7 +76,7 @@ export const itemListByCategory = (category) => async (dispatch) => {
     };
 
     const { data } = await axios(
-      `http://localhost:4000/api/item/getItemsByCategory/${category}`,
+      `${getBaseURL()}/api/item/getItemsByCategory/${category}`,
       config
     );
 
@@ -108,7 +111,7 @@ export const itemListByID = (id) => async (dispatch) => {
     };
 
     const { data } = await axios(
-      `http://localhost:4000/api/item/getItemsById/${id}`,
+      `${getBaseURL()}/api/item/getItemsById/${id}`,
       config
     );
 
@@ -147,7 +150,7 @@ export const itemAdd = (body) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `http://localhost:4000/api/item/addItem`,
+      `${getBaseURL()}/api/item/addItem`,
       body,
       config
     );
@@ -196,7 +199,7 @@ export const itemListByEmail = (email) => async (dispatch) => {
     };
 
     const { data } = await axios(
-      `http://localhost:4000/api/item/getItemsByEmail/${email}`,
+      `${getBaseURL()}/api/item/getItemsByEmail/${email}`,
       config
     );
 

@@ -16,7 +16,7 @@ export const chatCurrent = (id) => async (dispatch) => {
     };
 
     const { data } = await axios.get(
-      `http://localhost:4000/api/chat/getChat/${id}`,
+      `${getBaseURL()}/api/chat/getChat/${id}`,
       config
     );
 
