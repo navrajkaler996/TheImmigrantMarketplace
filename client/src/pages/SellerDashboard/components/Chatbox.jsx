@@ -82,7 +82,6 @@ const Chatbox = ({ chatId, chats, socket }) => {
     }
   };
 
-  console.log("loadi", loading);
   return (
     <>
       <div className="chatbox">

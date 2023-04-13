@@ -8,11 +8,14 @@ import Chatbox from "./Chatbox";
 import Conversation from "./Conversation";
 
 import SellerDashboardContext from "../SellerDashboardContext";
+import Spinner from "../../../components/Spinner";
 
 const Inbox = () => {
   const dispatch = useDispatch();
 
   const { login, chats } = useSelector((state) => state?.users);
+
+  const { loading } = chats;
 
   const { userInfo } = login;
 
@@ -30,15 +33,12 @@ const Inbox = () => {
   //Adding and fetching connected users
   useEffect(() => {
     socket.current.emit("addUser", userInfo._id);
-    socket.current.on("getUsers", (users) => {
-      console.log(users);
-    });
+    socket.current.on("getUsers", (users) => {});
   }, [userInfo]);
 
   useEffect(() => {}, [selectedChatId]);
 
   const changeHandler = (e) => {
-    console.log("----", e.target.value);
     if (e.target?.value) {
       setSelectedChat(e.target.value);
       const { _id } = chats?.chatData?.conversations.find((ch) =>
@@ -54,53 +54,77 @@ const Inbox = () => {
       <p className="secondary-heading"> Your messages</p>
       <hr className="divider" />
       <div className="inbox__container">
-        <div className="create-account__form--input-container inbox__dropdown">
-          <select
-            className="create-account__form--input create-account__form--input-dropdown"
-            onChange={(e) => changeHandler(e)}
-            name="city"
-            style={{ border: "1px solid #ccc" }}>
-            <option value="" disabled selected hidden>
-              Select a conversion
-            </option>
-            {chats?.chatData?.users?.length > 0 &&
-              chats?.chatData?.users.map((user) => {
-                return (
-                  user._id !== _id && (
-                    <option value={user._id} name={user.fullName}>
-                      {user.fullName}
-                    </option>
-                  )
-                );
-              })}
-          </select>
-        </div>
+        {loading && (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}>
+            {" "}
+            <Spinner color="#590d22" />{" "}
+          </div>
+        )}
 
-        <div className="inbox__list">
-          {chats?.chatData?.users?.length > 0 &&
-            chats?.chatData?.users.map(
-              (user) =>
-                user._id !== userInfo._id && (
-                  <Conversation
-                    user={user}
-                    chats={chats}
-                    selectedChat={selectedChat}
-                    setSelectedChat={setSelectedChat}
-                    setSelectedChatId={setSelectedChatId}
-                  />
-                )
-            )}
-        </div>
-        <div className="inbox__chat">
-          {!selectedChat && (
-            <p className="secondary-heading" style={{ marginTop: "50%" }}>
-              Select a conversation
-            </p>
-          )}
-          {selectedChatId && (
-            <Chatbox chatId={selectedChatId} chats={chats} socket={socket} />
-          )}
-        </div>
+        {!loading && (
+          <>
+            {/* Dropdown for mobile view */}
+            <div className="create-account__form--input-container inbox__dropdown">
+              <select
+                className="create-account__form--input create-account__form--input-dropdown"
+                onChange={(e) => changeHandler(e)}
+                name="city"
+                style={{ border: "1px solid #ccc" }}>
+                <option value="" disabled selected hidden>
+                  Select a conversion
+                </option>
+                {chats?.chatData?.users?.length > 0 &&
+                  chats?.chatData?.users.map((user) => {
+                    return (
+                      user._id !== _id && (
+                        <option value={user._id} name={user.fullName}>
+                          {user.fullName}
+                        </option>
+                      )
+                    );
+                  })}
+              </select>
+            </div>
+
+            {/* List for larger screeens */}
+            <div className="inbox__list">
+              {chats?.chatData?.users?.length > 0 &&
+                chats?.chatData?.users.map(
+                  (user) =>
+                    user._id !== userInfo._id && (
+                      <Conversation
+                        user={user}
+                        chats={chats}
+                        selectedChat={selectedChat}
+                        setSelectedChat={setSelectedChat}
+                        setSelectedChatId={setSelectedChatId}
+                      />
+                    )
+                )}
+            </div>
+            <div className="inbox__chat">
+              {!selectedChat && (
+                <p className="secondary-heading" style={{ marginTop: "50%" }}>
+                  Select a conversation
+                </p>
+              )}
+
+              {/* Chatbox where messages are displayed */}
+              {selectedChatId && (
+                <Chatbox
+                  chatId={selectedChatId}
+                  chats={chats}
+                  socket={socket}
+                />
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
