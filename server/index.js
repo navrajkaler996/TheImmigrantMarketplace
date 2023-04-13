@@ -22,7 +22,8 @@ app.use("/api/chat", chatRouter);
 app.use("/api/message", messageRouter);
 
 const PORT = process.env.PORT;
+const ENV = process.env.NODE_ENV;
 
 app.listen(PORT, () => {
-  console.log("Server is listening at Port: 4000");
+  console.log(`Server running in ${ENV} on Port: ${PORT} `);
 });
