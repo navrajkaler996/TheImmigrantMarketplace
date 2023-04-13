@@ -1,8 +1,8 @@
 export const getBaseURL = () => {
   let API_URL;
   console.log(window.location.host);
-  if (window.location.host === "https://immigrantmarketplace.onrender") {
-    API_URL = "https://immigrantmarketplace-api.onrender";
+  if (window.location.host === "https://immigrantmarketplace.onrender.com") {
+    API_URL = "https://immigrantmarketplace-api.onrender.com";
   }
 
   if (window.location.host === "localhost:3000") {
