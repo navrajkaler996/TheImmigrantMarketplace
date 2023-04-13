@@ -1,0 +1,39 @@
+{
+  "name": "ismarketplace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "server": "nodemon server/index",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node server/seeder",
+    "data:destroy": "node server/seeder -d",
+    "compile:sass": "sass client/src/sassStyles/main.scss src/index.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navrajkaler996/TheImmigrantMarketplace.git"
+  },
+  "author": "Navraj kaler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/navrajkaler996/TheImmigrantMarketplace/issues"
+  },
+  "homepage": "https://github.com/navrajkaler996/TheImmigrantMarketplace#readme",
+  "dependencies": {
+    "config": "^3.3.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.1",
+    "sass": "^1.62.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.20"
+  }
+}

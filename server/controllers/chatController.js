@@ -1,4 +1,3 @@
-import c from "config";
 import asyncHandler from "express-async-handler";
 import { errorMessages } from "../constants.js";
 import Chat from "../models/chatModel.js";
