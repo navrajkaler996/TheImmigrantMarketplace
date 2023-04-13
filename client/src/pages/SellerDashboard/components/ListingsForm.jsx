@@ -15,13 +15,13 @@ const ListingsForm = () => {
   };
 
   return (
-    <div className="listings-form">
-      <div className="create-account__form--input-container listings-form--input-container">
+    <div className="listingsform">
+      <div className="create-account__form--input-container listingsform--input-container">
         <label className="create-account__form--label">
           Please select a category
         </label>
         <select
-          className="create-account__form--input create-account__form--input-dropdown listings-form--input-dropdown"
+          className="create-account__form--input create-account__form--input-dropdown listingsform--input-dropdown"
           onChange={(e) => changeHandler(e)}
           name="category">
           <option value="" disabled selected hidden>

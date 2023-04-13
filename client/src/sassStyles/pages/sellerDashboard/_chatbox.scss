@@ -1,0 +1,80 @@
+/////CHATBOX
+.chatbox {
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0 1rem 0 0;
+  margin: 1rem 0;
+
+  position: inherit;
+
+  &__item {
+    display: flex;
+    min-height: 4rem;
+    height: auto;
+    padding-left: 0.5rem;
+    margin: 1rem 0;
+
+    &-image {
+      width: 4rem;
+      height: 4rem;
+      align-items: center;
+      border-radius: 3rem;
+      margin-left: 0.2rem;
+    }
+
+    &-container {
+      width: 100%;
+      word-wrap: break-word;
+
+      &-for-host {
+        display: flex;
+        justify-content: end;
+      }
+    }
+
+    &-text {
+      border: 1px solid #ccc;
+      border-radius: 3rem;
+      min-height: 4rem;
+      margin-left: 1rem;
+      font-size: 0.9em;
+      padding: 0.3rem 1.5rem;
+      text-align: left;
+      width: calc(100% - 15rem);
+
+      @include respond(tab-land) {
+        width: calc(100% - 10rem);
+      }
+
+      @include respond(tab-port) {
+        width: calc(100% - 8rem);
+      }
+    }
+  }
+
+  &__input-container {
+    display: flex;
+  }
+
+  &__button {
+    margin-top: 0;
+    width: 6rem;
+    padding: 0;
+    font-size: 0.7em;
+    margin-left: 0.8rem;
+  }
+
+  &__new-message {
+    width: "fit-content";
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10;
+    text-transform: uppercase;
+    color: #0362fc;
+    font-size: 0.8em;
+    animation: NewMessage 1s ease-in-out infinite;
+    transition: all 1s;
+  }
+}

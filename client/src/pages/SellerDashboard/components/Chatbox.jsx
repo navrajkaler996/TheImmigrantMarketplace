@@ -19,19 +19,39 @@ const Chatbox = ({ chatId, chats, socket }) => {
 
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMesssage] = useState("");
+  const [show, setShow] = useState({
+    newMessage: false,
+    clicked: false,
+  });
 
   const bottom = useRef(null);
+
+  useEffect(() => {
+    if (show.clicked) {
+      bottom.current?.scrollIntoView({ behavior: "smooth" });
+      setShow({
+        newMessage: false,
+        clicked: false,
+      });
+    }
+  }, [show.clicked]);
 
   //Receiving message
   useEffect(() => {
     socket.current.on("getMessage", (data) => {
       setArrivalMesssage({ chatId, senderId: data.senderId, text: data.text });
+      setShow({
+        ...show,
+        newMessage: true,
+      });
     });
   }, []);
 
   //Automatic scroll to the bottom
   useEffect(() => {
-    bottom.current?.scrollIntoView({ behavior: "smooth" });
+    if (!show.newMessage) {
+      bottom.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [totalMessages]);
 
   useEffect(() => {
@@ -57,14 +77,16 @@ const Chatbox = ({ chatId, chats, socket }) => {
           text: newMessage,
         });
       }
+
       setNewMessage("");
     }
   };
 
+  console.log("loadi", loading);
   return (
     <>
       <div className="chatbox">
-        {loading && !totalMessages && (
+        {loading && (
           <div
             style={{
               width: "100%",
@@ -77,12 +99,13 @@ const Chatbox = ({ chatId, chats, socket }) => {
           </div>
         )}
 
-        {totalMessages?.length > 0 &&
+        {!loading &&
+          totalMessages?.length > 0 &&
           totalMessages?.map((m) => {
             if (m.sender === userInfo._id) {
               return (
                 <div className="chatbox__item">
-                  <div className="chatbox__item-container chatbox__item-container-host">
+                  <div className="chatbox__item-container chatbox__item-container-for-host">
                     <p className="chatbox__item-text">{m.text}</p>
                   </div>
                 </div>
@@ -98,8 +121,21 @@ const Chatbox = ({ chatId, chats, socket }) => {
               );
             }
           })}
+
         <div ref={bottom}></div>
       </div>
+      {show.newMessage && (
+        <span
+          className="chatbox__new-message"
+          onClick={() =>
+            setShow({
+              ...show,
+              clicked: true,
+            })
+          }>
+          New message{" "}
+        </span>
+      )}
 
       <form className="chatbox__input-container" onSubmit={sendMessageHandler}>
         <input

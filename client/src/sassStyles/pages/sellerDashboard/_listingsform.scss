@@ -1,0 +1,17 @@
+.listingsform {
+  padding: 1rem 2rem;
+
+  &--input-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0;
+  }
+
+  &--input-dropdown {
+    border: 1px solid #ccc;
+
+    @include respond(phone) {
+      width: 100%;
+    }
+  }
+}
