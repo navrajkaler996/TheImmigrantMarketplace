@@ -35,13 +35,49 @@ const Inbox = () => {
     });
   }, [userInfo]);
 
+  useEffect(() => {}, [selectedChatId]);
+
+  const changeHandler = (e) => {
+    console.log("----", e.target.value);
+    if (e.target?.value) {
+      setSelectedChat(e.target.value);
+      const { _id } = chats?.chatData?.conversations.find((ch) =>
+        ch.members.includes(e.target.value)
+      );
+
+      setSelectedChatId(_id);
+    }
+  };
+
   return (
     <div className="inbox">
       <p className="secondary-heading"> Your messages</p>
       <hr className="divider" />
       <div className="inbox__container">
+        <div className="create-account__form--input-container inbox__dropdown">
+          <select
+            className="create-account__form--input create-account__form--input-dropdown"
+            onChange={(e) => changeHandler(e)}
+            name="city"
+            style={{ border: "1px solid #ccc" }}>
+            <option value="" disabled selected hidden>
+              Select a conversion
+            </option>
+            {chats?.chatData?.users?.length > 0 &&
+              chats?.chatData?.users.map((user) => {
+                return (
+                  user._id !== _id && (
+                    <option value={user._id} name={user.fullName}>
+                      {user.fullName}
+                    </option>
+                  )
+                );
+              })}
+          </select>
+        </div>
+
         <div className="inbox__list">
-          {chats?.chatData?.users.length > 0 &&
+          {chats?.chatData?.users?.length > 0 &&
             chats?.chatData?.users.map(
               (user) =>
                 user._id !== userInfo._id && (

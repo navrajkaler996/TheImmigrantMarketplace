@@ -116,7 +116,7 @@ const RentalsForm = () => {
   }
 
   return (
-    <div className="form-container">
+    <div className="form__container">
       <p className="secondary-heading" style={{ marginTop: "2rem" }}>
         {" "}
         List a rental
@@ -133,12 +133,12 @@ const RentalsForm = () => {
         </p>
       ) : (
         <>
-          <div className="create-account__form--input-container form-container--input-container">
+          <div className="create-account__form--input-container form__input-container">
             <label className="create-account__form--label">
               Number of beds:
             </label>
             <select
-              className="create-account__form--input create-account__form--input-dropdown listings-form--input-dropdown form-container-rentals--input"
+              className="create-account__form--input create-account__form--input-dropdown listingsform--input-dropdown form__input"
               onChange={(e) => changeHandler(e)}
               name="beds">
               <option value="" disabled selected hidden>
@@ -152,12 +152,12 @@ const RentalsForm = () => {
               <option value=">5"> &gt; 5</option>
             </select>
           </div>
-          <div className="create-account__form--input-container form-container--input-container">
+          <div className="create-account__form--input-container form__input-container">
             <label className="create-account__form--label">
               Number of baths:
             </label>
             <select
-              className="create-account__form--input create-account__form--input-dropdown listings-form--input-dropdown form-container-rentals--input"
+              className="create-account__form--input create-account__form--input-dropdown listingsform--input-dropdown form__input"
               onChange={(e) => changeHandler(e)}
               name="baths">
               <option value="" disabled selected hidden>
@@ -169,12 +169,12 @@ const RentalsForm = () => {
               <option value=">3"> &gt; 3</option>
             </select>
           </div>
-          <div className="create-account__form--input-container form-container--input-container">
+          <div className="create-account__form--input-container form__input-container">
             <label className="create-account__form--label">
               Property type:
             </label>
             <select
-              className="create-account__form--input create-account__form--input-dropdown listings-form--input-dropdown form-container-rentals--input"
+              className="create-account__form--input create-account__form--input-dropdown listingsform--input-dropdown form__input"
               onChange={(e) => changeHandler(e)}
               name="type">
               <option value="" disabled selected hidden>
@@ -185,43 +185,43 @@ const RentalsForm = () => {
               <option value="apartment">Apartment</option>
             </select>
           </div>
-          <div className="create-account__form--input-container form-container--input-container">
+          <div className="create-account__form--input-container form__input-container">
             <label className="create-account__form--label">
               Rent per month:
             </label>
             <input
               type="number"
-              className="create-account__form--input listings-form--input-dropdown form-container-rentals--input"
+              className="create-account__form--input listingsform--input-dropdown form__input"
               placeholder="Enter rent per month in CAD"
               name="price"
               onChange={(e) => changeHandler(e)}
             />
           </div>
-          <div className="create-account__form--input-container form-container--input-container">
+          <div className="create-account__form--input-container form__input-container">
             <label className="create-account__form--label">Address:</label>
             <input
               type="text"
-              className="create-account__form--input listings-form--input-dropdown form-container-rentals--input"
+              className="create-account__form--input listingsform--input-dropdown form__input"
               placeholder="Enter address"
               name="address"
               onChange={(e) => changeHandler(e)}
             />
           </div>
-          <div className="create-account__form--input-container form-container--input-container">
+          <div className="create-account__form--input-container form__input-container">
             <label className="create-account__form--label">Postal code:</label>
             <input
               type="text"
-              className="create-account__form--input listings-form--input-dropdown form-container-rentals--input"
+              className="create-account__form--input listingsform--input-dropdown form__input"
               placeholder="Enter postal code"
               name="postalCode"
               onChange={(e) => changeHandler(e)}
             />
           </div>
-          <div className="create-account__form--input-container form-container--input-container">
+          <div className="create-account__form--input-container form__input-container">
             <label className="create-account__form--label">Description:</label>
             <textarea
               type="number"
-              className="create-account__form--input listings-form--input-dropdown form-container-rentals--input form-container-rentals--textarea"
+              className="create-account__form--input listingsform--input-dropdown form__input form__input-textarea"
               placeholder="Enter description"
               name="description"
               onChange={(e) => changeHandler(e)}
@@ -229,12 +229,12 @@ const RentalsForm = () => {
               cols="10"
             />
           </div>
-          <div className="create-account__form--input-container form-container--input-container">
+          <div className="create-account__form--input-container form__input-container">
             <label className="create-account__form--label">Utilities:</label>
 
             {rentalUtilities?.map((u) => {
               return (
-                <div className="form-container-rentals--checkbox-container">
+                <div className="form__checkbox-container">
                   <input
                     type="checkbox"
                     name={u}
@@ -246,7 +246,7 @@ const RentalsForm = () => {
               );
             })}
           </div>
-          <div className="create-account__form--input-container form-container--input-container">
+          <div className="create-account__form--input-container form__input-container">
             <input
               type="sumbit"
               className="create-account__form--input create-account__form--input-submit button-success "

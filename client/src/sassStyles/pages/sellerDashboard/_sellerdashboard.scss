@@ -1,0 +1,58 @@
+@import "inbox";
+@import "chatbox";
+@import "conversation";
+@import "listingsform";
+@import "rentalsform";
+@import "yourlistings";
+
+.sellerdashboard {
+  &__container {
+    padding: 2rem;
+    box-sizing: border-box;
+    margin-top: 5rem;
+    min-height: calc(100vh - 15rem);
+    display: flex;
+
+    @include respond(tab-port) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__listings {
+    width: 60%;
+    height: fit-content;
+    border: 1px solid #ccc;
+    border-radius: 3rem 3rem 3rem 3rem;
+    padding: 2rem;
+    text-align: center;
+
+    @include respond(phone and tab-port) {
+      width: 100%;
+    }
+  }
+
+  &__todo {
+    width: 40%;
+    height: fit-content;
+    border: 1px solid #ccc;
+    border-radius: 3rem 3rem 3rem 3rem;
+    padding: 2rem 4rem;
+
+    margin-left: 4rem;
+
+    @include respond(tab-port) {
+      width: 100%;
+      margin-left: 0rem;
+      margin-top: 2rem;
+    }
+
+    & ul li {
+      margin: 0.5rem 0;
+    }
+
+    &-link {
+      cursor: pointer;
+    }
+  }
+}

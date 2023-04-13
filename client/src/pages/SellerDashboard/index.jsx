@@ -44,19 +44,19 @@ const SellerDashboard = () => {
   const sellerToDo = (
     <>
       <li
-        className="sellerdashboard-todo__link"
+        className="sellerdashboard__todo-link"
         id="yourListings"
         onClick={() => setActive("yourListings")}>
         Your listings
       </li>
       <li
-        className="sellerdashboard-todo__link"
+        className="sellerdashboard__todo-link"
         id="addToListing"
         onClick={() => setActive("addToListing")}>
         Add a new listing
       </li>
       <li
-        className="sellerdashboard-todo__link"
+        className="sellerdashboard__todo-link"
         id="addToListing"
         onClick={() => setActive("inbox")}>
         Check inbox
@@ -69,19 +69,19 @@ const SellerDashboard = () => {
   const buyerToDo = (
     <>
       <li
-        className="sellerdashboard-todo__link"
+        className="sellerdashboard__todo-link"
         id="yourListings"
         onClick={() => setActive("yourBuys")}>
         Your buys
       </li>
       <li
-        className="sellerdashboard-todo__link"
+        className="sellerdashboard__todo-link"
         id="addToListing"
         onClick={() => setActive("cart")}>
         Cart
       </li>
       <li
-        className="sellerdashboard-todo__link"
+        className="sellerdashboard__todo-link"
         id="addToListing"
         onClick={() => setActive("inbox")}>
         Check inbox
@@ -93,8 +93,8 @@ const SellerDashboard = () => {
 
   return (
     <SellerDashboardContext.Provider value={{ userInfo, items, socket }}>
-      <div className="sellerdashboard-container">
-        <div className="sellerdashboard-listings">
+      <div className="sellerdashboard__container">
+        <div className="sellerdashboard__listings">
           {active === "yourListings" && <YourListings />}
 
           {active === "addToListing" && <ListingsForm />}
@@ -102,7 +102,7 @@ const SellerDashboard = () => {
           {active === "inbox" && <Inbox />}
         </div>
 
-        <div className="sellerdashboard-todo">
+        <div className="sellerdashboard__todo">
           <ul>
             {userInfo?.userMode === "seller" && { ...sellerToDo }}
             {userInfo?.userMode === "buyer" && { ...buyerToDo }}
