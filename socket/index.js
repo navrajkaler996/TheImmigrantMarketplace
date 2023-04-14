@@ -72,11 +72,11 @@ io.on("connection", (socket) => {
   });
 });
 
-const __dirname = path.resolve();
+const __dirname = path.resolve("../");
 
 if (process.env.NODE_ENV === "PRODUCTION") {
   app.use(express.static(path.join(__dirname, "/client/build")));
-
+  console.log(__dirname);
   app.get("/*", (req, res) =>
     res.sendFile(path.resolve(__dirname, "client", "build", "main.js"))
   );
