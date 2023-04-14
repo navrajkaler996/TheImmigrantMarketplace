@@ -23,7 +23,9 @@ const SellerDashboard = () => {
 
   //Connecting socket
   useEffect(() => {
-    socket.current = io("ws://localhost:8800");
+    // socket.current = io("ws://localhost:8800");
+
+    socket.current = io("ws://immigrantmarketplace.onrender.com");
 
     if (state?.active) setActive(state?.active);
   }, []);
