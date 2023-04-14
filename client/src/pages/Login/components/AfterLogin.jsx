@@ -9,7 +9,6 @@ const AfterLogin = () => {
   const { userInfo } = login;
 
   const userModeHandler = (e) => {
-    console.log(e.target.id)
     dispatch(userMode(e.target.id));
   };
 
