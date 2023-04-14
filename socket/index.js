@@ -22,12 +22,12 @@ const io = new Server(httpServer, {
   },
 });
 
-console.log(
-  "----",
-  process.env.NODE_ENV === "PRODUCTION"
-    ? process.env.PROD_URL
-    : process.env.DEV_URL
-);
+// console.log(
+//   "----",
+//   process.env.NODE_ENV === "PRODUCTION"
+//     ? process.env.PROD_URL
+//     : process.env.DEV_URL
+// );
 
 // const io = require("socket.io")(8800, {
 //   cors: {
