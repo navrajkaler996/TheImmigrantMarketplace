@@ -3,7 +3,6 @@ export const addUser = (users, userId, socketId) => {
   if (!user) {
     users.push({ userId, socketId });
   }
-
   return users;
 };
 

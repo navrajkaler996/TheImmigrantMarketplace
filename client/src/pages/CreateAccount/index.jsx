@@ -179,8 +179,6 @@ const CreateAccount = () => {
     }
   };
 
-  // console.log(form.sell, formErrors.sell);
-
   const submitHandler = () => {
     if (
       formErrors.fullName ||

@@ -23,9 +23,9 @@ const SellerDashboard = () => {
 
   //Connecting socket
   useEffect(() => {
-    // socket.current = io("ws://localhost:8800");
+    socket.current = io("ws://localhost:8800");
 
-    socket.current = io("ws://immigrantmarketplace.onrender.com");
+    // socket.current = io("ws://immigrantmarketplace.onrender.com");
 
     if (state?.active) setActive(state?.active);
   }, []);
@@ -59,7 +59,7 @@ const SellerDashboard = () => {
       </li>
       <li
         className="sellerdashboard__todo-link"
-        id="addToListing"
+        id="inbox"
         onClick={() => setActive("inbox")}>
         Check inbox
       </li>
@@ -84,7 +84,7 @@ const SellerDashboard = () => {
       </li>
       <li
         className="sellerdashboard__todo-link"
-        id="addToListing"
+        id="inbox"
         onClick={() => setActive("inbox")}>
         Check inbox
       </li>

@@ -36,7 +36,6 @@ export const itemList =
         count,
       };
 
-      console.log("+++++---", getBaseURL());
       const { data } = await axios(
         `${getBaseURL()}/api/item/getItems`,
         body,

@@ -40,10 +40,27 @@ const Chatbox = ({ chatId, chats, socket }) => {
   useEffect(() => {
     socket.current.on("getMessage", (data) => {
       setArrivalMesssage({ chatId, senderId: data.senderId, text: data.text });
-      setShow({
-        ...show,
-        newMessage: true,
-      });
+
+      //Checking if the scroll is at the bottom or not.
+      //If scrollHeight - scrollTop - clientHeight is less than 1,
+      //it means the scroll is at the bottom.
+      //If scroll is at the bottom,
+      //then new message popup does not appear.
+      const chatboxElement = document.getElementById("chatbox");
+      if (
+        !(
+          Math.abs(
+            chatboxElement.scrollHeight -
+              chatboxElement.scrollTop -
+              chatboxElement.clientHeight
+          ) < 1
+        )
+      ) {
+        setShow({
+          ...show,
+          newMessage: true,
+        });
+      }
     });
   }, []);
 
@@ -62,10 +79,10 @@ const Chatbox = ({ chatId, chats, socket }) => {
     setNewMessage(e.target.value);
   };
 
-  const sendMessageHandler = (e) => {
+  const sendMessageHandler = async (e) => {
     e.preventDefault();
     if (newMessage?.length > 0) {
-      dispatch(messageAdd(chatId, userInfo._id, newMessage));
+      await dispatch(messageAdd(chatId, userInfo._id, newMessage));
       //Extracting recieverId
       const recieverId = getRecieverId(chats, chatId, userInfo._id);
 
@@ -84,8 +101,8 @@ const Chatbox = ({ chatId, chats, socket }) => {
 
   return (
     <>
-      <div className="chatbox">
-        {loading && totalMessages?.length === 0 && (
+      <div className="chatbox" id="chatbox">
+        {loading && !totalMessages && (
           <div
             style={{
               width: "100%",
