@@ -1,17 +1,33 @@
 import { createServer } from "http";
 import path from "path";
 import { Server } from "socket.io";
+import dotenv from "dotenv";
+import express from "express";
+import cors from "cors";
 
 import { addUser, removeUser, getUser } from "./helper.js";
 
+dotenv.config();
 const httpServer = createServer();
+const app = express();
+
+app.use(cors({ origin: true, credentials: true }));
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
-    // origin: "https://immigrantmarketplace.onrender.com",
+    origin:
+      process.env.NODE_ENV === "PRODUCTION"
+        ? process.env.PROD_URL
+        : process.env.DEV_URL,
   },
 });
+
+console.log(
+  "----",
+  process.env.NODE_ENV === "PRODUCTION"
+    ? process.env.PROD_URL
+    : process.env.DEV_URL
+);
 
 // const io = require("socket.io")(8800, {
 //   cors: {
