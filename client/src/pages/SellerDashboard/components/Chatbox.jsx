@@ -85,7 +85,7 @@ const Chatbox = ({ chatId, chats, socket }) => {
   return (
     <>
       <div className="chatbox">
-        {loading && (
+        {loading && totalMessages?.length === 0 && (
           <div
             style={{
               width: "100%",
@@ -98,8 +98,7 @@ const Chatbox = ({ chatId, chats, socket }) => {
           </div>
         )}
 
-        {!loading &&
-          totalMessages?.length > 0 &&
+        {totalMessages?.length > 0 &&
           totalMessages?.map((m) => {
             if (m.sender === userInfo._id) {
               return (
@@ -139,7 +138,7 @@ const Chatbox = ({ chatId, chats, socket }) => {
       <form className="chatbox__input-container" onSubmit={sendMessageHandler}>
         <input
           type="text"
-          className="create-account__form--input listings-form--input-dropdown form-container-rentals--input"
+          className="create-account__form--input listingsform--input-dropdown form__input"
           placeholder="Type..."
           name="message"
           value={newMessage}
