@@ -11,3 +11,17 @@ export const getBaseURL = () => {
 
   return API_URL;
 };
+
+export const getSocketURL = () => {
+  let SOCKET_URL;
+
+  if (window.location.host === "immigrantmarketplace.onrender.com") {
+    SOCKET_URL = "ws://immigrantmarkplace-socket.onrender.com";
+  }
+
+  if (window.location.host === "localhost:3000") {
+    SOCKET_URL = "ws://localhost:8800";
+  }
+
+  return SOCKET_URL;
+};

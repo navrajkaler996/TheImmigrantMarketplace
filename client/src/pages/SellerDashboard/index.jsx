@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 import { io } from "socket.io-client";
+import { getSocketURL } from "../../utils/apiURL";
 
 import Inbox from "./components/Inbox";
 import ListingsForm from "./components/ListingsForm";
@@ -23,7 +24,8 @@ const SellerDashboard = () => {
 
   //Connecting socket
   useEffect(() => {
-    socket.current = io("ws://localhost:8800");
+    console.log("+++++", getSocketURL());
+    socket.current = io(getSocketURL());
 
     // socket.current = io("ws://immigrantmarketplace.onrender.com");
 
