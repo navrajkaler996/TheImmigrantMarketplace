@@ -8,7 +8,8 @@ const socketSetup = () => {
 
   const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:3000",
+      // origin: "http://localhost:3000",
+      origin: "https://immigrantmarketplace.onrender.com",
     },
   });
 
