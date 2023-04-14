@@ -4,6 +4,7 @@ import {
   CHAT_CURRENT_REQUEST,
   CHAT_CURRENT_SUCCESS,
 } from "../utils/actionConstants";
+import { getBaseURL } from "../utils/apiURL";
 
 export const chatCurrent = (id) => async (dispatch) => {
   try {

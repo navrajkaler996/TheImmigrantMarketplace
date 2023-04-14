@@ -10,6 +10,7 @@ import {
   USER_LOGOUT,
   USER_MODE,
 } from "../utils/actionConstants";
+import { getBaseURL } from "../utils/apiURL";
 
 export const createAccount =
   (fullName, mobileNumber, email, password, city, type) => async (dispatch) => {
