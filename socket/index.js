@@ -74,6 +74,8 @@ io.on("connection", (socket) => {
 
 const __dirname = path.resolve("../");
 
+
+
 if (process.env.NODE_ENV === "PRODUCTION") {
   app.use(express.static(path.join(__dirname, "/client/build")));
   console.log(__dirname);
