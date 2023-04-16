@@ -12,6 +12,7 @@ const httpServer = createServer();
 const app = express();
 
 app.use(cors({ origin: true, credentials: true }));
+app.use(express.json({ extended: false }));
 
 const io = new Server(httpServer, {
   cors: {
@@ -22,18 +23,12 @@ const io = new Server(httpServer, {
   },
 });
 
-// console.log(
-//   "----",
-//   process.env.NODE_ENV === "PRODUCTION"
-//     ? process.env.PROD_URL
-//     : process.env.DEV_URL
-// );
-
-// const io = require("socket.io")(8800, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//   },
-// });
+console.log(
+  "----",
+  process.env.NODE_ENV === "PRODUCTION"
+    ? process.env.PROD_URL
+    : process.env.DEV_URL
+);
 
 ////// CONTAINS USER ID and SOCKET ID
 let users = [];
@@ -72,16 +67,16 @@ io.on("connection", (socket) => {
   });
 });
 
-const __dirname = path.resolve("../");
+// const __dirname = path.resolve("../");
 
-
-
-if (process.env.NODE_ENV === "PRODUCTION") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
-  console.log(__dirname);
-  app.get("/*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "client", "build", "main.js"))
-  );
-}
+// if (process.env.NODE_ENV === "PRODUCTION") {
+//   app.use(express.static(path.join(__dirname, "/client/build")));
+//   console.log(__dirname);
+//   app.get("/", (req, res) => {
+//     console.log(
+//       res.sendFile(path.resolve(__dirname, "client", "build", "main.js"))
+//     );
+//   });
+// }
 
 httpServer.listen(8800);
