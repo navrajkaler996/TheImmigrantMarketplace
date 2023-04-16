@@ -16,7 +16,7 @@ export const getSocketURL = () => {
   let SOCKET_URL;
 
   if (window.location.host === "immigrantmarketplace.onrender.com") {
-    SOCKET_URL = "ws://immigrantmarkplace-socket.onrender.com";
+    SOCKET_URL = "wss://immigrantmarkplace-socket.onrender.com";
   }
 
   if (window.location.host === "localhost:3000") {
