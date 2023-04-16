@@ -7,14 +7,12 @@ import userRouter from "./routes/userRoutes.js";
 import itemRouter from "./routes/itemRoutes.js";
 import chatRouter from "./routes/chatRoutes.js";
 import messageRouter from "./routes/messageRoutes.js";
-import socketSetup from "./socket/index.js";
 
 dotenv.config();
 
 const app = express();
 
 connectDB();
-// socketSetup();
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
