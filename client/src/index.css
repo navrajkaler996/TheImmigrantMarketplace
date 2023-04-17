@@ -547,6 +547,10 @@ big-desk
   .card {
     width: 30rem;
   }
+  .card:hover {
+    cursor: pointer;
+    transform: none;
+  }
 }
 .card__image {
   height: 18rem;
@@ -557,6 +561,7 @@ big-desk
 }
 @media (max-width: 37.5em) {
   .card__image {
+    filter: brightness(80%);
     width: 29rem;
   }
 }
@@ -572,6 +577,11 @@ big-desk
   transition: opacity 0.4s, transform 0.2s;
   z-index: 999;
 }
+@media (max-width: 37.5em) {
+  .card__image--arrow-1 {
+    opacity: 1;
+  }
+}
 .card__image--arrow-1:hover {
   transform: scale(1.2);
 }
@@ -583,6 +593,11 @@ big-desk
   opacity: 0;
   transition: opacity 0.4s, transform 0.2s;
   z-index: 999;
+}
+@media (max-width: 37.5em) {
+  .card__image--arrow-2 {
+    opacity: 1;
+  }
 }
 .card__image--arrow-2:hover {
   transform: scale(1.2);
@@ -1014,6 +1029,7 @@ big-desk
   cursor: pointer;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 0.5rem;
   z-index: 10;
   text-transform: uppercase;
   color: #0362fc;

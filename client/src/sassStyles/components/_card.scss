@@ -24,6 +24,10 @@
 
   @include respond(phone) {
     width: 30rem;
+    &:hover {
+      cursor: pointer;
+      transform: none;
+    }
   }
 
   border-radius: 3rem;
@@ -36,6 +40,7 @@
     border-radius: 3rem;
 
     @include respond(phone) {
+      filter: brightness(80%);
       width: 29rem;
     }
   }
@@ -54,6 +59,10 @@
         opacity: 0;
         transition: opacity 0.4s, transform 0.2s;
 
+        @include respond(phone) {
+          opacity: 1;
+        }
+
         &:hover {
           transform: scale(1.2);
         }
@@ -67,6 +76,10 @@
         width: 3rem;
         opacity: 0;
         transition: opacity 0.4s, transform 0.2s;
+
+        @include respond(phone) {
+          opacity: 1;
+        }
 
         &:hover {
           transform: scale(1.2);

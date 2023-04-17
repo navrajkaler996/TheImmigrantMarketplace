@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node server/seeder",
     "data:destroy": "node server/seeder -d",
-    "compile:sass": "sass client/src/sassStyles/main.scss src/index.css -w"
+    "compile:sass": "sass client/src/sassStyles/main.scss client/src/index.css -w"
   },
   "repository": {
     "type": "git",
