@@ -28,7 +28,7 @@ const Card = ({ data, onClick, open = false }) => {
       setUtilities(temp);
     }
 
-    /////CREATING ABOUT ARRAY FOR RENTALS
+    /////CREATING ABOUT ARRAY FOR MATTRESSES
     if (
       data?.category === "mattresses" &&
       Object.keys(data?.about)?.length > 0
@@ -65,15 +65,24 @@ const Card = ({ data, onClick, open = false }) => {
     }
   };
 
+  const handleClick = (e) => {
+    console.log(e.target.id);
+
+    if (e.target.id === "arrow-2") handleNextClick();
+    else if (e.target.id === "arrow-1") handlePreviousClick();
+    else onClick();
+  };
+
   return (
-    <div className="card" onClick={onClick}>
+    <div className="card" id="card" onClick={(e) => handleClick(e)}>
       {data?.images?.length > 0 && (
         <div className="card__image--container">
           <img
             src={PreviousArrow}
             alt=""
             className="card__image--arrow-1"
-            onClick={handlePreviousClick}
+            onClick={(e) => handleClick(e)}
+            id="arrow-1"
           />
           <img
             src={
@@ -87,7 +96,8 @@ const Card = ({ data, onClick, open = false }) => {
             src={NextArrow}
             alt=""
             className="card__image--arrow-2"
-            onClick={handleNextClick}
+            onClick={(e) => handleClick(e)}
+            id="arrow-2"
           />
         </div>
       )}

@@ -18,18 +18,21 @@ const SellerDashboard = () => {
 
   const { userInfo } = login;
 
-  const [active, setActive] = useState("yourListings");
+  const [active, setActive] = useState("");
 
   const socket = useRef();
 
   //Connecting socket
   useEffect(() => {
-    console.log("+++++", getSocketURL());
     socket.current = io(getSocketURL());
 
     // socket.current = io("ws://immigrantmarketplace.onrender.com");
 
     if (state?.active) setActive(state?.active);
+    else {
+      if (userInfo?.userMode === "seller") setActive("yourListings");
+      if (userInfo?.userMode === "buyer") setActive("yourBuys");
+    }
   }, []);
 
   if (Object.keys(login)?.length == 0) {

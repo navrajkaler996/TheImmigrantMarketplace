@@ -547,6 +547,9 @@ big-desk
   .card {
     width: 30rem;
   }
+  .card:hover {
+    cursor: pointer;
+  }
 }
 .card__image {
   height: 18rem;
@@ -568,9 +571,14 @@ big-desk
   top: 40%;
   left: 2rem;
   width: 3rem;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.4s, transform 0.2s;
   z-index: 999;
+}
+@media (max-width: 37.5em) {
+  .card__image--arrow-1 {
+    opacity: 1;
+  }
 }
 .card__image--arrow-1:hover {
   transform: scale(1.2);
@@ -583,6 +591,11 @@ big-desk
   opacity: 0;
   transition: opacity 0.4s, transform 0.2s;
   z-index: 999;
+}
+@media (max-width: 37.5em) {
+  .card__image--arrow-2 {
+    opacity: 1;
+  }
 }
 .card__image--arrow-2:hover {
   transform: scale(1.2);
