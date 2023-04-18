@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Switch from "react-switch";
 
 const Hamburger = ({
@@ -75,12 +75,12 @@ const Hamburger = ({
             </Link>
           </li>
           <li className="navigation__item">
-            <Link
+            <a
               className="navigation__link"
-              to="/items/mattresses"
-              reloadDocument>
+              href="#/items/mattresses"
+              reloadDocument={true}>
               Mattresses
-            </Link>
+            </a>
           </li>
           <li className="navigation__item">
             <a href="#" className="navigation__link">
