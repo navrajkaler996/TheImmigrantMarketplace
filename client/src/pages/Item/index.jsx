@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { itemListByID } from "../../actions/itemActions";
 import DollarIcon from "../../assets/coin.png";
 import HomeIcon from "../../assets/home.png";
@@ -21,6 +21,7 @@ const Item = () => {
   const [data, setData] = useState({});
   const [utilities, setUtilities] = useState([]);
   const [about, setAbout] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     dispatch(itemListByID(id));
@@ -61,8 +62,13 @@ const Item = () => {
     };
   }, [listItem]);
 
+  /////Opening modal
+  const contactHandler = () => {
+    setShowDropdown(!showDropdown);
+  };
+
   return (
-    <div className="item-container">
+    <div className="item__container">
       {loading && (
         <div
           style={{
@@ -77,26 +83,26 @@ const Item = () => {
       {!loading && Object.keys(data)?.length > 0 && (
         <>
           {" "}
-          <div className="item-image-container">
+          <div className="item__images">
             <img
               src={require(`/public/images/items/${data.images[0]}`).default}
-              className="item-image-container__image-1"
+              className="item__images-primary"
             />
-            <div className="item-image-container__sub">
+            <div className="item__images-second-row">
               <img
                 src={require(`/public/images/items/${data.images[1]}`).default}
-                className="item-image-container__image-2"
+                className="item__images-secondary-1"
               />
               <img
                 src={require(`/public/images/items/${data.images[2]}`).default}
-                className="item-image-container__image-3"
+                className="item__images-secondary-2"
               />
             </div>
           </div>
-          <div className="item-details-container">
+          <div className="item__details">
             <div className="primary-heading">{data.itemName}</div>
             <hr className="divider" />
-            <div className="item-details__description">
+            <div className="item__details-description">
               <div className="card__details--item">
                 <span className="card__details--item-text">
                   {" "}
@@ -105,41 +111,41 @@ const Item = () => {
                   message if interested.
                 </span>
               </div>
-              <div className="card__details--item item-details__description--margin ">
+              <div className="card__details--item item__details-margin ">
                 <img src={DollarIcon} className="card__details--item-img" />
-                <span className="card__details--item-text item-details__description--margin-2">
+                <span className="card__details--item-text item__details-margin-2">
                   {data?.price}
                 </span>
               </div>
               {data?.category === "Rentals" && (
-                <div className="card__details--item item-details__description--margin">
+                <div className="card__details--item item__details-margin">
                   <img src={HomeIcon} className="card__details--item-img" />
-                  <span className="card__details--item-text item-details__description--margin-2">
+                  <span className="card__details--item-text item__details-margin-2">
                     {data?.type}
                   </span>
                 </div>
               )}
-              <div className="card__details--item item-details__description--margin">
+              <div className="card__details--item item__details-margin">
                 <img src={SellerIcon} className="card__details--item-img" />
-                <span className="card__details--item-text item-details__description--margin-2">
+                <span className="card__details--item-text item__details-margin-2">
                   {data?.sellerName}
                 </span>
               </div>
-              <div className="card__details--item item-details__description--margin">
+              <div className="card__details--item item__details-margin">
                 <img src={EmailIcon} className="card__details--item-img" />
-                <span className="card__details--item-text item-details__description--margin-2">
+                <span className="card__details--item-text item__details-margin-2">
                   {data?.sellerEmail}
                 </span>
               </div>
-              <div className="card__details--item item-details__description--margin">
+              <div className="card__details--item item__details-margin">
                 <img src={PhoneIcon} className="card__details--item-img" />
-                <span className="card__details--item-text item-details__description--margin-2">
+                <span className="card__details--item-text item__details-margin-2">
                   {data?.sellerMobile}
                 </span>
               </div>
-              <div className="card__details--item item-details__description--margin">
+              <div className="card__details--item item__details-margin">
                 <img src={AddressIcon} className="card__details--item-img" />
-                <span className="card__details--item-text item-details__description--margin-2">
+                <span className="card__details--item-text item__details-margin-2">
                   {data?.address}
                 </span>
               </div>
@@ -148,7 +154,7 @@ const Item = () => {
                   className="card__details--item item-details__description--margin"
                   style={{ alignItems: "baseline" }}>
                   <b>Utilities: </b>
-                  <div className="item-details__description--array">
+                  <div className="item__details-array">
                     {utilities.map((u) => (
                       <>
                         <span className="card__details--item-text">{u}</span>
@@ -159,7 +165,7 @@ const Item = () => {
                 </div>
               )}
               {about?.length > 0 && (
-                <div className="card__details--item card__details--item-about item-details__description--margin">
+                <div className="card__details--item card__details--item-about item__details-margin">
                   {Object.keys(about[0]).map((key) => {
                     return (
                       <span
@@ -169,6 +175,43 @@ const Item = () => {
                       </span>
                     );
                   })}
+                </div>
+              )}
+
+              <button
+                className="create-account__form--input create-account__form--input-submit item__contact button-success"
+                onClick={contactHandler}>
+                Contact
+              </button>
+
+              {showDropdown && (
+                <div className="item__contact item__contact-dropdown main-header__utilities--dropdown">
+                  <ul className="main-header__utilities--dropdown-list">
+                    <Link
+                      to="/account"
+                      state={{
+                        active: "inbox",
+                      }}
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>Send a message</li>
+                    </Link>
+                    <Link
+                      to="/account"
+                      state={{
+                        active: "inbox",
+                      }}
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>Send an email</li>
+                    </Link>
+                    <Link
+                      to="/account"
+                      state={{
+                        active: "inbox",
+                      }}
+                      className="main-header__utilities--dropdown-list-item">
+                      <li>Call</li>
+                    </Link>
+                  </ul>
                 </div>
               )}
             </div>
