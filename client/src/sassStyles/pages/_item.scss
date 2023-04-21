@@ -1,10 +1,11 @@
 .item {
-  &-container {
+  &__container {
     display: flex;
     padding: 2rem;
     box-sizing: border-box;
     margin-top: 5rem;
     min-height: calc(100vh - 15rem);
+    z-index: 1;
 
     @include respond(phone) {
       flex-direction: column;
@@ -12,7 +13,7 @@
     }
   }
 
-  &-image-container {
+  &__images {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -21,74 +22,85 @@
       width: 100%;
     }
 
-    &__image-1 {
+    &-primary {
       max-width: 100%;
       max-height: 40rem;
       border: 1px solid #ccc;
       border-radius: 3rem 3rem 0 0;
     }
 
-    &__image-2 {
+    &-secondary-1 {
       width: 49%;
       height: 20rem;
       border: 1px solid #ccc;
       border-radius: 0 0 0 3rem;
     }
 
-    &__image-3 {
+    &-secondary-2 {
       width: 49%;
       height: 20rem;
       border: 1px solid #ccc;
       border-radius: 0 0 3rem 0;
     }
 
-    &__sub {
+    &-second-row {
       display: flex;
       justify-content: space-between;
       margin-top: 2rem;
     }
   }
 
-  &-details {
-    &-container {
-      width: 50%;
-      height: fit-content;
-      margin-left: 4rem;
-      border: 1px solid #ccc;
-      border-radius: 3rem 3rem 3rem 3rem;
-      padding: 2rem;
-      text-align: center;
+  &__details {
+    width: 50%;
+    height: fit-content;
+    margin-left: 4rem;
+    border: 1px solid #ccc;
+    border-radius: 3rem 3rem 3rem 3rem;
+    padding: 2rem;
+    text-align: center;
 
-      @include respond(phone) {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 4rem;
-      }
+    @include respond(phone) {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 4rem;
     }
 
-    &__description {
+    &-description {
+      position: relative;
       text-align: left;
+    }
 
-      &--array {
-        margin-left: 1rem;
-        text-transform: capitalize;
-      }
+    &-margin {
+      margin: 2rem 0 2rem 1.5rem;
+    }
 
-      &--margin {
-        margin: 2rem 0 2rem 1.5rem;
-      }
-      &--margin-2 {
-        margin-left: 1rem;
-      }
+    &-margin-2 {
+      margin-left: 1rem;
+    }
+
+    &-array {
+      margin-left: 1rem;
+      text-transform: capitalize;
     }
   }
-}
 
-#item-table {
-  text-align: left;
-  min-width: 100%;
-  table-layout: fixed;
-  & tr :first-child {
-    font-weight: 700;
+  &__contact {
+    position: absolute;
+    top: 18%;
+    right: 1%;
+    margin: 0;
+    width: 15rem;
+    padding: 0;
+
+    &-dropdown {
+      top: 32%;
+      right: 1%;
+      padding: 1rem;
+      font-size: 0.9em;
+
+      @include respond(phone) {
+        display: block;
+      }
+    }
   }
 }
