@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { itemListByID } from "../../actions/itemActions";
 import DollarIcon from "../../assets/coin.png";
 import HomeIcon from "../../assets/home.png";
@@ -10,13 +10,19 @@ import EmailIcon from "../../assets/email.png";
 import PhoneIcon from "../../assets/phone.png";
 
 import Spinner from "../../components/Spinner";
+import { chatCreate } from "../../actions/chatActions";
 
 const Item = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
-  const { items } = useSelector((state) => state.users);
+  const { items, login, chats } = useSelector((state) => state.users);
 
   const { listItem, loading } = items;
+
+  const { userInfo } = login;
+
+  const { loading: chatLoading, error: chatError, chatOnContact } = chats;
 
   const [data, setData] = useState({});
   const [utilities, setUtilities] = useState([]);
@@ -62,9 +68,24 @@ const Item = () => {
     };
   }, [listItem]);
 
-  /////Opening modal
+  useEffect(() => {
+    if (chatOnContact) {
+      return navigate("/account", { state: { active: "inbox" } });
+    }
+  }, [chatOnContact]);
+
   const contactHandler = () => {
     setShowDropdown(!showDropdown);
+  };
+
+  const clickHandler = (redirectTo) => {
+    console.log("reciver", data.sellerEmail);
+
+    if (userInfo?._id) {
+      dispatch(chatCreate(userInfo._id, data?.sellerEmail));
+    } else {
+      return navigate("/login");
+    }
   };
 
   return (
@@ -187,30 +208,44 @@ const Item = () => {
               {showDropdown && (
                 <div className="item__contact item__contact-dropdown main-header__utilities--dropdown">
                   <ul className="main-header__utilities--dropdown-list">
-                    <Link
-                      to="/account"
-                      state={{
-                        active: "inbox",
-                      }}
-                      className="main-header__utilities--dropdown-list-item">
-                      <li>Send a message</li>
-                    </Link>
-                    <Link
-                      to="/account"
-                      state={{
-                        active: "inbox",
-                      }}
-                      className="main-header__utilities--dropdown-list-item">
-                      <li>Send an email</li>
-                    </Link>
-                    <Link
-                      to="/account"
-                      state={{
-                        active: "inbox",
-                      }}
-                      className="main-header__utilities--dropdown-list-item">
-                      <li>Call</li>
-                    </Link>
+                    {chatLoading ? (
+                      <div
+                        style={{
+                          width: "100%",
+                          display: "flex",
+                          justifyContent: "center",
+
+                          // marginTop: "20rem",
+                        }}>
+                        <Spinner color="#590d22" />
+                      </div>
+                    ) : (
+                      <>
+                        {" "}
+                        <li
+                          className="main-header__utilities--dropdown-list-item"
+                          onClick={() => clickHandler("inbox")}>
+                          Send a message
+                        </li>
+                        {/* </Link> */}
+                        <Link
+                          to="/account"
+                          state={{
+                            active: "inbox",
+                          }}
+                          className="main-header__utilities--dropdown-list-item">
+                          <li>Send an email</li>
+                        </Link>
+                        <Link
+                          to="/account"
+                          state={{
+                            active: "inbox",
+                          }}
+                          className="main-header__utilities--dropdown-list-item">
+                          <li>Call</li>
+                        </Link>
+                      </>
+                    )}
                   </ul>
                 </div>
               )}

@@ -98,6 +98,10 @@
       padding: 1rem;
       font-size: 0.9em;
 
+      & li {
+        cursor: pointer;
+      }
+
       @include respond(phone) {
         display: block;
       }

@@ -7,17 +7,34 @@ import User from "../models/userModel.js";
 //POST @ /api/chat/createNewChat
 export const createNewChat = asyncHandler(async (req, res) => {
   try {
-    const { senderId, recieverId } = req.body;
+    const { senderId, sellerEmail } = req.body;
+
+    const user = await User.findOne({ email: sellerEmail });
+
+    let recieverId;
+    if (user) {
+      recieverId = user._id.toString();
+    }
 
     if (senderId && recieverId) {
-      const newChat = await Chat.create({
+      const chatExists = await Chat.find({
         members: [senderId, recieverId],
-        names: {},
       });
 
-      if (newChat) {
-        res.status(201).json({
-          message: "New chat created!",
+      if (chatExists?.length === 0) {
+        const newChat = await Chat.create({
+          members: [senderId, recieverId],
+          names: {},
+        });
+
+        if (newChat) {
+          res.status(201).json({
+            newChat: newChat,
+          });
+        }
+      } else {
+        res.status(201).send({
+          newChat: chatExists,
         });
       }
     } else {

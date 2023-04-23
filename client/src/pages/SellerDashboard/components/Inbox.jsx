@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { chatCurrent } from "../../../actions/chatActions";
+import { chatClear, chatCurrent } from "../../../actions/chatActions";
 
 import Chatbox from "./Chatbox";
 import Conversation from "./Conversation";
@@ -15,7 +15,7 @@ const Inbox = () => {
 
   const { login, chats } = useSelector((state) => state?.users);
 
-  const { loading } = chats;
+  const { loading, chatOnContact } = chats;
 
   const { userInfo } = login;
 
@@ -37,6 +37,27 @@ const Inbox = () => {
   }, [userInfo]);
 
   useEffect(() => {}, [selectedChatId]);
+
+  useEffect(() => {
+    if (chatOnContact?.newChat) {
+      const senderId = chatOnContact?.newChat[0]?.members?.find(
+        (id) => id != _id
+      );
+
+      if (senderId) {
+        setSelectedChat(senderId);
+        setSelectedChatId(chatOnContact?.newChat[0]._id);
+      }
+    }
+
+    return () => {
+      console.log("unmounted");
+      dispatch(chatClear());
+    };
+  }, []);
+
+  console.log(selectedChat);
+  console.log(selectedChatId);
 
   const changeHandler = (e) => {
     if (e.target?.value) {
