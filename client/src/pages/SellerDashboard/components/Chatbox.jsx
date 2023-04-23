@@ -115,7 +115,7 @@ const Chatbox = ({ chatId, chats, socket }) => {
           </div>
         )}
 
-        {totalMessages?.length > 0 &&
+        {totalMessages?.length > 0 ? (
           totalMessages?.map((m) => {
             if (m.sender === userInfo._id) {
               return (
@@ -135,7 +135,12 @@ const Chatbox = ({ chatId, chats, socket }) => {
                 </div>
               );
             }
-          })}
+          })
+        ) : (
+          <p className="secondary-heading" style={{ marginTop: "50%" }}>
+            Send a message to start
+          </p>
+        )}
 
         <div ref={bottom}></div>
       </div>

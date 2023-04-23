@@ -199,55 +199,57 @@ const Item = () => {
                 </div>
               )}
 
-              <button
-                className="create-account__form--input create-account__form--input-submit item__contact button-success"
-                onClick={contactHandler}>
-                Contact
-              </button>
+              {userInfo?.userMode === "buyer" && (
+                <>
+                  <button
+                    className="create-account__form--input create-account__form--input-submit item__contact button-success"
+                    onClick={contactHandler}>
+                    Contact
+                  </button>
 
-              {showDropdown && (
-                <div className="item__contact item__contact-dropdown main-header__utilities--dropdown">
-                  <ul className="main-header__utilities--dropdown-list">
-                    {chatLoading ? (
-                      <div
-                        style={{
-                          width: "100%",
-                          display: "flex",
-                          justifyContent: "center",
-
-                          // marginTop: "20rem",
-                        }}>
-                        <Spinner color="#590d22" />
-                      </div>
-                    ) : (
-                      <>
-                        {" "}
-                        <li
-                          className="main-header__utilities--dropdown-list-item"
-                          onClick={() => clickHandler("inbox")}>
-                          Send a message
-                        </li>
-                        {/* </Link> */}
-                        <Link
-                          to="/account"
-                          state={{
-                            active: "inbox",
-                          }}
-                          className="main-header__utilities--dropdown-list-item">
-                          <li>Send an email</li>
-                        </Link>
-                        <Link
-                          to="/account"
-                          state={{
-                            active: "inbox",
-                          }}
-                          className="main-header__utilities--dropdown-list-item">
-                          <li>Call</li>
-                        </Link>
-                      </>
-                    )}
-                  </ul>
-                </div>
+                  {showDropdown && (
+                    <div className="item__contact item__contact-dropdown main-header__utilities--dropdown">
+                      <ul className="main-header__utilities--dropdown-list">
+                        {chatLoading ? (
+                          <div
+                            style={{
+                              width: "100%",
+                              display: "flex",
+                              justifyContent: "center",
+                            }}>
+                            <Spinner color="#590d22" />
+                          </div>
+                        ) : (
+                          <>
+                            {" "}
+                            <li
+                              className="main-header__utilities--dropdown-list-item"
+                              onClick={() => clickHandler("inbox")}>
+                              Send a message
+                            </li>
+                            {/* </Link> */}
+                            <Link
+                              to="/account"
+                              state={{
+                                active: "inbox",
+                              }}
+                              className="main-header__utilities--dropdown-list-item">
+                              <li>Send an email</li>
+                            </Link>
+                            <Link
+                              to="/account"
+                              state={{
+                                active: "inbox",
+                              }}
+                              className="main-header__utilities--dropdown-list-item">
+                              <li>Call</li>
+                            </Link>
+                          </>
+                        )}
+                      </ul>
+                    </div>
+                  )}
+                </>
               )}
             </div>
           </div>{" "}
