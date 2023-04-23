@@ -10,8 +10,7 @@ const Spinner = ({ color = "#fff" }) => {
         alignContent: "center",
         width: "fit-content",
         // height: "100vh",
-      }}
-      >
+      }}>
       <HashLoader color={color} />
     </div>
   );

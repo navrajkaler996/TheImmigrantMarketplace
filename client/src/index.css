@@ -914,6 +914,9 @@ big-desk
   padding: 1rem;
   font-size: 0.9em;
 }
+.item__contact-dropdown li {
+  cursor: pointer;
+}
 @media (max-width: 37.5em) {
   .item__contact-dropdown {
     display: block;
