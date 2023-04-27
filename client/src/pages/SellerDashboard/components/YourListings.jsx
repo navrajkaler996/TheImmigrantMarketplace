@@ -40,7 +40,7 @@ const YourListings = () => {
                   <div className="yourlistings__item">
                     <img
                       src={
-                        require(`/public/images/items/rentals/image1.webp`)
+                        require(`/public/images/items/rentals/image1.jpg`)
                           .default
                       }
                       className="yourlistings__item-image"
