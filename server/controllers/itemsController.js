@@ -147,3 +147,36 @@ export const addItem = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+/////FETCHING ALL THE ITEMS by category
+//GET @ /api/item/getItems/:category
+export const getItemsByCategoryForScroll = asyncHandler(async (req, res) => {
+  try {
+    let category = req.params.category;
+    let pageNumber = req.params.pageNumber;
+    let length = req.params.length;
+    let items = await Item.find({ category: category })
+      .sort({ createdAt: "-1" })
+      .limit(11 * pageNumber + 1);
+
+    if (items) {
+      if (items.length == length) {
+        console.log(length, items.length, length);
+        res.status(201).json({
+          items,
+          noMore: true,
+        });
+      } else {
+        res.status(201).json({
+          items,
+        });
+      }
+    }
+  } catch (error) {
+    res.status(400).send({
+      message: errorMessages.FETCHING_DATA,
+    });
+
+    throw new Error(error);
+  }
+});

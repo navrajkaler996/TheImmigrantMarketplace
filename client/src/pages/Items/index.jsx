@@ -1,40 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { itemListByCategory } from "../../actions/itemActions";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "../../components/Card";
 import Spinner from "../../components/Spinner";
+import useInfiniteScroll from "./hooks/useInfiniteScroll";
 
 const Items = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { category } = useParams();
-  const { items } = useSelector((state) => state.users);
 
-  const { list, loading } = items;
+  const [pageNumber, setPageNumber] = useState(1);
 
-  // const [y, setY] = useState(0);
+  const { list, loading, noMore } = useInfiniteScroll(category, pageNumber);
 
   useEffect(() => {
-    dispatch(itemListByCategory(category));
-  }, [category]);
-
-  // const handleNavigation = (e) => {
-  //   const window = e.currentTarget;
-  //   console.log("n", window.scrollY);
-  //   if (y > window.scrollY) {
-  //     console.log("scrolling up");
-  //   } else if (y < window.scrollY) {
-  //     console.log("scrolling down");
-  //   }
-  //   setY(window.scrollY);
-  // };
-
-  // useEffect(() => {
-  //   setY(window.scrollY);
-
-  //   window.addEventListener("scroll", (e) => handleNavigation(e));
-  // }, [window.scrollY]);
+    console.log("mounted");
+  }, []);
 
   return (
     <div className="items">
@@ -50,18 +32,55 @@ const Items = () => {
           <Spinner color="#590d22" />
         </div>
       )}
-      {!loading && list?.length > 0 && (
-        <div className="items-container">
-          {list.map(
-            (item) =>
-              item.category === category && (
-                <Card
-                  onClick={() => navigate(`/item/${item.category}/${item._id}`)}
-                  data={item}
-                />
-              )
+      {list?.length > 0 && (
+        <>
+          <div className="items-container" id="items-container">
+            {list.map((item, i) => {
+              {
+                /* Keeping track of last card for infinite scroll */
+              }
+              if (i === list.length - 1) {
+                return (
+                  item.category === category && (
+                    <Card
+                      isRef={true}
+                      onClick={() =>
+                        navigate(`/item/${item.category}/${item._id}`)
+                      }
+                      data={item}
+                      pageNumber={pageNumber}
+                      setPageNumber={setPageNumber}
+                      loading={loading}
+                      noMore={noMore}
+                    />
+                  )
+                );
+              } else {
+                return (
+                  item.category === category && (
+                    <Card
+                      onClick={() =>
+                        navigate(`/item/${item.category}/${item._id}`)
+                      }
+                      data={item}
+                    />
+                  )
+                );
+              }
+            })}
+          </div>
+          {loading && list?.length > 0 && (
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                margin: "5rem 0",
+              }}>
+              <Spinner color="#590d22" />
+            </div>
           )}
-        </div>
+        </>
       )}
     </div>
   );

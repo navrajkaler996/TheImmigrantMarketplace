@@ -60,7 +60,8 @@ export const itemListReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action?.payload?.loading,
-        list: action?.payload?.list,
+        listByCategory: action?.payload?.listByCategory,
+        noMore: action?.payload?.noMore,
       };
     }
 
