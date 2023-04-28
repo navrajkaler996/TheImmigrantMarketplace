@@ -218,3 +218,41 @@ export const itemListByEmail = (email) => async (dispatch) => {
     });
   }
 };
+
+export const itemListByCategoryForScroll =
+  (category, pageNumber, length) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ITEM_LIST_BY_CATEGORY_REQUEST,
+        payload: { loading: true },
+      });
+
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const { data } = await axios(
+        `${getBaseURL()}/api/item/getItemsByCategoryForScroll/${category}/${pageNumber}/${length}`,
+        config
+      );
+
+      dispatch({
+        type: ITEM_LIST_BY_CATEGORY_SUCCESS,
+        payload: {
+          loading: false,
+          listByCategory: data?.items,
+          noMore: data?.noMore,
+        },
+      });
+    } catch (error) {
+      dispatch({
+        type: ITEM_LIST_BY_CATEGORY_FAIL,
+        payload: {
+          loading: false,
+          error: error,
+        },
+      });
+    }
+  };

@@ -1,16 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DollarIcon from "../../assets/coin.png";
 import HomeIcon from "../../assets/home.png";
 import AddressIcon from "../../assets/address.png";
 import SellerIcon from "../../assets/user.png";
 import NextArrow from "../../assets/next-white.png";
 import PreviousArrow from "../../assets/back-white.png";
+import { useCallback } from "react";
 
 // import Sample from "/images/items/rentals/image-sample.jpeg";
 
-const Card = ({ data, onClick, open = false }) => {
+const Card = ({
+  data,
+  onClick,
+  open = false,
+  isRef = false,
+  loading,
+  pageNumber,
+  setPageNumber,
+  noMore,
+}) => {
   const [utilities, setUtilities] = useState([]);
   const [about, setAbout] = useState([]);
+
+  const ref = useRef();
+  const observer = useRef();
+  const lastItemRef = useCallback(
+    (node) => {
+      console.log("loadd", loading);
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !noMore) {
+          setPageNumber(pageNumber + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading]
+  );
 
   useEffect(() => {
     /////CREATING UTILITIES ARRAY FOR RENTALS
@@ -74,7 +101,11 @@ const Card = ({ data, onClick, open = false }) => {
   };
 
   return (
-    <div className="card" id="card" onClick={(e) => handleClick(e)}>
+    <div
+      className="card"
+      id="card"
+      onClick={(e) => handleClick(e)}
+      ref={isRef ? lastItemRef : ref}>
       {data?.images?.length > 0 && (
         <div className="card__image--container">
           <img
