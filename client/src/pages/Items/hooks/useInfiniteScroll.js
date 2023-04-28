@@ -13,10 +13,6 @@ const useInfiniteScroll = (category, pageNumber) => {
     dispatch(itemListByCategoryForScroll(category, pageNumber, list?.length));
   }, [category, pageNumber]);
 
-  useEffect(() => {
-    if (list) setLength(list?.length);
-  }, [list]);
-
   return { list, loading, noMore };
 };
 
